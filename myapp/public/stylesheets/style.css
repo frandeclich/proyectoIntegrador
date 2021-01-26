@@ -1,8 +1,60 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+:root{
+  --verdeHeader: #bedbbb;
+  --verdeFondo: #709478;
+  --marroncito: #92817a;
+  --marronFooter: #707070;
+  --cremaCajas: #f8f1f1;
 }
 
-a {
-  color: #00B7FF;
+.contenedor{
+  background-color: var(--verdeFondo)
+}
+
+/*HEADER*/
+header{
+  background-color: var(--verdeHeader);
+}
+nav{
+  height: 9vh;
+  font-size: 100px;
+}
+nav div a{
+  font-size: 80%;
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+}
+nav div form input{
+  height: 60%;
+}
+
+banner img{
+  width: 100%;
+}
+
+
+/*MAIN*/
+main h2{
+  margin-top: 15px;
+  margin-left: 10px;
+  font-size: 50px;
+}
+article{
+  background-color: var(--cremaCajas) ;
+  border: 2px solid var(--marroncito);
+}
+article div.image img{
+  width:100%;
+}
+.description a{
+  font-size: 40px;
+  color: black;
+  text-decoration: none;
+  font-weight: bolder;
+  
+}
+
+/*FOOOOTER*/
+footer{
+  background-color: var(--marronFooter);
 }
