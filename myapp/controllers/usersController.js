@@ -8,5 +8,10 @@ module.exports={
         res.render('register',{
             title:'Registrate'
         })
+    },
+    micarrito: (req,res)=>{
+        res.render('micarrito',{
+            title:'Mi carrito'
+        })
     }
 }
