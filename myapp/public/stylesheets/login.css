@@ -1,0 +1,47 @@
+.caja-login{
+    /* background-color: var(--cremaCajas); */
+    height: 60vh;
+    margin:3rem 4.5rem;
+    /* border-radius: 2rem; */
+}
+.login-title{
+    font-size: 6rem;
+    margin-top: 15rem;
+    font-weight: bold;
+}
+
+
+/* FORM DE CSS */
+
+/* .form-login{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 90%;
+    font-size: 4rem;
+    margin: 0 2rem;
+}
+ */
+
+/* FORM DE BT */
+.form-login-bt{
+    font-size: 5rem;
+    margin-top: 5rem;
+}
+.form-control{
+    height:10rem ;
+    font-size: 5rem;
+    margin-bottom: 5rem;
+}
+.btn-submit-login{
+    width: 100%;
+    margin-top: 10rem;
+    font-size: 5.5rem;
+    padding: 1rem;
+}
+.btn-login-register{
+    width: 100%;
+    margin-top: 5rem;
+    font-size: 4rem;
+    padding: 1rem;
+}
