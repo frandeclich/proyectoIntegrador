@@ -15,143 +15,44 @@
             
             <div class="search-result-title">
                 <h2>
-                    Resultado de la búsqueda "disco eminem".
+                    Resultado de la búsqueda "<%=query  %> ":
                 </h2>
             </div>
             <section>
-                <article>
-                    <div class="img-article-busqueda">
-                        <a href="#" class="link-imagen-article">
-                            <img src="images/eminem-the-eminem-show.webp" alt="imagen-producto" class="imagenn">
-                        </a>
-                        <div class="caja-estado">
-                            <p class="estado">
-                                NUEVO
-                            </p>
+                <% products.forEach(product => { %>
+                    <article>
+                        <div class="img-article-busqueda">
+                            <a href="/detail/<%= product.id %> " class="link-imagen-article">
+                                <img src="images/<%= product.image %> " alt="imagen-producto" class="imagenn">
+                            </a>
+                            <div class="caja-estado">
+                                <p class="estado">
+                                    <%if (product.condition) { %>
+                                        NUEVO
+                                    <%} %>
+                                    <%if(!product.condition){%> 
+                                        USADO
+                                    <% } %> 
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="description">
-                        <a href="#" class="link-titulo-article">
-                            <h3>
-                                DISCO EMINEM THE EMINEM SHOW VINILO EDICIÓN 2017
-                            </h3>
-                        </a>
-                        <p class="price">
-                            $30.450
-                        </p>
-                        <a href="#" class="caja-changuito">
-                            <i class="fas fa-shopping-cart"></i>
-                        </a>
-                        
-                    </div>
-                </article>
+                        <div class="description">
+                            <a href="/detail/<%= product.id %>" class="link-titulo-article">
+                                <h3>
+                                    <%= product.title %> 
+                                </h3>
+                            </a>
+                            <p class="price">
+                                <%= product.price %> 
+                            </p>
+                            <a href="/user/micarrito" class="caja-changuito">
+                                <i class="fas fa-shopping-cart"></i>
+                            </a>
+                            
+                        </div>
+                    </article>
+                <% }) %>
 
-
-                <article>
-                    <div class="img-article-busqueda">
-                        <a href="#" class="link-imagen-article">
-                            <img src="images/lali-esposito-libra.webp" alt="imagen-producto" class="imagenn">
-                        </a>
-                        <div class="caja-estado">
-                            <p class="estado">
-                                NUEVO
-                            </p>
-                        </div>
-                    </div>
-                    <div class="description">
-                        <a href="#" class="link-titulo-article">
-                            <h3>
-                                LALI ESPÓSITO "LIBRA" 2015
-                            </h3>
-                        </a>
-                        <p class="price">
-                            $3.450
-                        </p>
-                        <a href="#" class="caja-changuito">
-                            <i class="fas fa-shopping-cart"></i>
-                        </a>
-                        
-                    </div>
-                </article>
-
-                <article>
-                    <div class="img-article-busqueda">
-                        <a href="#" class="link-imagen-article">
-                            <img src="images/bandalos-chinos-bach.webp" alt="imagen-producto" class="imagenn">
-                        </a>
-                        <div class="caja-estado">
-                            <p class="estado">
-                                USADO
-                            </p>
-                        </div>
-                    </div>
-                    <div class="description">
-                        <a href="#" class="link-titulo-article">
-                            <h3>
-                                BÁNDALOS CHINOS "BACH" EDICIÓN 2013
-                            </h3>
-                        </a>
-                        <p class="price">
-                            $1.250
-                        </p>
-                        <a href="#" class="caja-changuito">
-                            <i class="fas fa-shopping-cart"></i>
-                        </a>
-                        
-                    </div>
-                </article>
-                <article>
-                    <div class="img-article-busqueda">
-                        <a href="#" class="link-imagen-article">
-                            <img src="images\victor-heredia-clarin.jpg" alt="imagen-producto" class="imagenn">
-                        </a>
-                        <div class="caja-estado">
-                            <p class="estado">
-                                NUEVO
-                            </p>
-                        </div>
-                    </div>
-                    <div class="description">
-                        <a href="#" class="link-titulo-article">
-                            <h3>
-                                VICTOR HEREDIA "CLARÍN" CD NUEVO 2020
-                            </h3>
-                        </a>
-                        <p class="price">
-                            $3.450
-                        </p>
-                        <a href="#" class="caja-changuito">
-                            <i class="fas fa-shopping-cart"></i>
-                        </a>
-                        
-                    </div>
-                </article>
-                <article>
-                    <div class="img-article-busqueda">
-                        <a href="#" class="link-imagen-article">
-                            <img src="images\KASE-O-Dentro-de-El-Círculo.png" alt="imagen-producto" class="imagenn">
-                        </a>
-                        <div class="caja-estado">
-                            <p class="estado">
-                                NUEVO
-                            </p>
-                        </div>
-                    </div>
-                    <div class="description">
-                        <a href="#" class="link-titulo-article">
-                            <h3>
-                                KASE.O "DENTRO DEL CÍRCULO DVD DOCUMENTAL 2019"
-                            </h3>
-                        </a>
-                        <p class="price">
-                            $970
-                        </p>
-                        <a href="#" class="caja-changuito">
-                            <i class="fas fa-shopping-cart"></i>
-                        </a>
-                        
-                    </div>
-                </article>
 
             </section>
         </main>

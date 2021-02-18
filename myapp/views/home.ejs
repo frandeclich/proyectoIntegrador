@@ -18,139 +18,19 @@
         <div class="slider-destacados">
           <div class="slider">
             <div class="slide">
-              <div class="articulo d-block">
-                <article class="">
-                  <div class="image">
-                    <a href=""><img src="images/rem-live-in-milan.jpg" alt="Imagen"></a>
-                  </div>
-                  <div class="description row">
-                    <a href="" class="nombre">REM Live in Milan 2007 VIVO INCREÍBLE NUEVO 2017</a>
-                    <a href="" class="price success">$9.078</a>
-                  </div>  
-                </article>
-              </div>
-              <div class="articulo col-1 d-block">
-                <article class="">
-                  <div class="image">
-                    <a href=""><img src="images/KASE-O-Dentro-de-El-Círculo.png" alt="Imagen"></a>
-                  </div>
-                  <div class="description row">
-                    <a href="" class="nombre">REM Live in Milan 2007</a>
-                    <a href="" class="price">$9.078</a>
-                  </div>  
-                </article>
-              </div>
-              <div class="articulo col-1 d-block">
-                <article class="">
-                  <div class="image">
-                    <a href=""><img src="images/rem-live-in-milan.jpg" alt="Imagen"></a>
-                  </div>
-                  <div class="description row">
-                    <a href="" class="nombre">REM Live in Milan 2007</a>
-                    <a href="" class="price">$9.078</a>
-                  </div>  
-                </article>
-              </div>
-              <div class="articulo col-1 d-block">
-                <article class="">
-                  <div class="image">
-                    <a href=""><img src="images/rem-live-in-milan.jpg" alt="Imagen"></a>
-                  </div>
-                  <div class="description row">
-                    <a href="" class="nombre">REM Live in Milan 2007</a>
-                    <a href="" class="price success">$9.078</a>
-                  </div>  
-                </article>
-              </div>
-              <div class="articulo col-1 d-block">
-                <article class="">
-                  <div class="image">
-                    <a href=""><img src="images/rem-live-in-milan.jpg" alt="Imagen"></a>
-                  </div>
-                  <div class="description row">
-                    <a href="" class="nombre">REM Live in Milan 2007 CD NUEVO LASER DISC</a>
-                    <a href="" class="price">$9.078</a>
-                  </div>  
-                </article>
-              </div>
-              <div class="articulo col-1 d-block">
-                <article class="">
-                  <div class="image">
-                    <a href=""><img src="images/rem-live-in-milan.jpg" alt="Imagen"></a>
-                  </div>
-                  <div class="description row">
-                    <a href="" class="nombre">REM Live in Milan 2007</a>
-                    <a href="" class="price">$9.078</a>
-                  </div>  
-                </article>
-              </div>
-              <div class="articulo col-1 d-block">
-                <article class="">
-                  <div class="image">
-                    <a href=""><img src="images/rem-live-in-milan.jpg" alt="Imagen"></a>
-                  </div>
-                  <div class="description row">
-                    <a href="" class="nombre">REM Live in Milan 2007</a>
-                    <a href="" class="price success">$9.078</a>
-                  </div>  
-                </article>
-              </div>
-              <div class="articulo col-1 d-block">
-                <article class="">
-                  <div class="image">
-                    <a href=""><img src="images/rem-live-in-milan.jpg" alt="Imagen"></a>
-                  </div>
-                  <div class="description row">
-                    <a href="" class="nombre">REM Live in Milan 2007</a>
-                    <a href="" class="price">$9.078</a>
-                  </div>  
-                </article>
-              </div>
-              <div class="articulo col-1 d-block">
-                <article class="">
-                  <div class="image">
-                    <a href=""><img src="images/rem-live-in-milan.jpg" alt="Imagen"></a>
-                  </div>
-                  <div class="description row">
-                    <a href="" class="nombre">REM Live in Milan 2007</a>
-                    <a href="" class="price">$9.078</a>
-                  </div>  
-                </article>
-              </div>
-              <div class="articulo col-1 d-block">
-                <article class="">
-                  <div class="image">
-                    <a href=""><img src="images/rem-live-in-milan.jpg" alt="Imagen"></a>
-                  </div>
-                  <div class="description row">
-                    <a href="" class="nombre">REM Live in Milan 2007</a>
-                    <a href="" class="price success">$9.078</a>
-                  </div>  
-                </article>
-              </div>
-              <div class="articulo col-1 d-block">
-                <article class="">
-                  <div class="image">
-                    <a href=""><img src="images/rem-live-in-milan.jpg" alt="Imagen"></a>
-                  </div>
-                  <div class="description row">
-                    <a href="" class="nombre">REM Live in Milan 2007</a>
-                    <a href="" class="price">$9.078</a>
-                  </div>  
-                </article>
-              </div>
-              <div class="articulo col-1 d-block">
-                <article class="">
-                  <div class="image">
-                    <a href=""><img src="images/rem-live-in-milan.jpg" alt="Imagen"></a>
-                  </div>
-                  <div class="description row">
-                    <a href="" class="nombre">REM Live in Milan 2007</a>
-                    <a href="" class="price">$9.078</a>
-                  </div>  
-                </article>
-              </div>
-            </div>
+              <% featured.forEach(product => { %>
+                <div class="articulo d-block">
+                  <article>
+                    <div class="image">
+                      <a href=""><img src="images/<%= product.image %> " alt="Imagen"></a>
+                    </div>
+                    <div class="description row">
+                      <a href="" class="nombre"><%= product.title %></a>
+                      <a href="" class="price success"><%= product.price %></a>
+                    </div>  
+                  </article>
+                </div>
+              <% }) %>
 
           </div>
         </div>
@@ -178,7 +58,7 @@
             <article class="categoria col-6">
               <div class="caja">
                 <div class="image">
-                  <a href="/category/cds"><img src="images/caja-vinilos.webp" alt="imagen-vinilos"></a>
+                  <a href="/category/cds"><img src="images/cds.png" alt="imagen-vinilos"></a>
                 </div>
                 <div class="epigrafe">
                   <p>CD'S</p>
@@ -189,7 +69,7 @@
             <article class="categoria col-6">
               <div class="caja">
                 <div class="image">
-                  <a href="/category/cassettes"><img src="images/caja-vinilos.webp" alt="imagen-vinilos"></a>
+                  <a href="/category/cassettes"><img src="images/cssettes.png" alt="imagen-vinilos"></a>
                 </div>
                 <div class="epigrafe">
                   <p>CASSETTES</p>
@@ -200,7 +80,7 @@
             <article class="categoria col-6">
               <div class="caja">
                 <div class="image">
-                  <a href="/category/speakers"><img src="images/caja-vinilos.webp" alt="imagen-vinilos"></a>
+                  <a href="/category/speakers"><img src="images/speakers.png" alt="imagen-vinilos"></a>
                 </div>
                 <div class="epigrafe" name="1">
                   <p>PERIFÉRICOS</p>

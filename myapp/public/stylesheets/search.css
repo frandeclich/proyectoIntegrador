@@ -60,7 +60,7 @@ div.img-article-busqueda img{
 }
 .description{
     padding-left: 3rem;
-    max-width: 60%;
+    width: 60%;
     position: relative;
 }
 .link-titulo-article{
@@ -75,7 +75,7 @@ div.img-article-busqueda img{
 .price{
     position: absolute;
     bottom: 2rem;
-    font-size: 8rem;
+    font-size: 7rem;
 }
 .caja-changuito{
     position: absolute;

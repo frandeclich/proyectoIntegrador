@@ -11,22 +11,27 @@
             <main>
                 <div class="caja-principal-detail">
                     <h3 class="margen-costadito">
-                        TINI TINI TINI CD ÁLBUM COMPLETO GENIAL MAGNÍFICO
+                        <%= product.title %> 
                     </h3>
                     <div class="margen-costadito img-container">
-                        <img src="/images/tini-tini-tini.webp" alt="Imagen detalle producto" class="image">
+                        <img src="/images/<%= product.image %> " alt="Imagen detalle producto" class="image">
                         <a href="#" class="favoritos">
                             <i class="far fa-heart"></i>
                         </a>
                         <div class="caja-estado">
                             <p class="estado">
-                                NUEVO
+                                <%if (product.condition) { %>
+                                  NUEVO
+                                <%} %>
+                                <%if(!product.condition){%> 
+                                    USADO
+                                <% } %> 
                             </p>
                         </div>
                     </div>
                     <div class="price-share-container margen-costadito">
                         <p class="price-detail">
-                            $3.780
+                            <%= product.price %> 
                         </p>
                         <a href="#" class="share">
                             <i class="fas fa-share-alt"></i>
@@ -34,70 +39,10 @@
                     </div>
 
 
-                    <!-- ACCORDION -->
-
-
-                    <!-- <div class="accordion" id="accordionExample">
-                        <div class="accordion-item">
-                          <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                              Descripción y especificaciones.
-                            </button>
-                          </h2>
-                          <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                              
-                              Martina Stoessel es una de las cantantes revolucionarias del pop argentino. en 2020, tras varios sencillos, estrena su primer disco CARLOS CARLOS CARLOS, donde narra las vivencias de un pibe de Caballito que es el hijo de tntecno jaja 27 lucas te imaginás bueno cuestión que el pibe es hincha de ferro y es durísimo porque los de ferro son medio muertos pero no le decimos nada porque se enoja y nos da con el paraguas así que vamos ferro ferrito lindo pasión de caballito todo verde carajo daaaale ferrooooooo te queremos ver campeón bueno ahora que carlitos ya se aburrió porque no está en japonés sigo como les contaba Adelaide y su marido se van a vivir a su casa de la infancia pero la de ella no la de los dos porque si no medio que serían hermanos y eso no está bueno bah que se yo es cultural pero los nenes pueden salir mogóeeeeee con condiciones especiales como le dicen ahora pero bueno eso aparecen unos locos con mascaras y le dicen o bela chiao bela chiao bela chiaochiaochiao y aparece rodrigo de la serna y Adelaide dice noooo rodrigo de la serna te amo soy re fan de Hermanos y Detectives pero en realidad era Ricardo Morfín montado en el pibe Emorfi y ella dice noooo me la conteineeeer es el papá del chino morfín y le ofrece una cocucha pero era coca live y el tipo le dice nooo es una poronga instiiiixxx y se saca la cara del asco y en realidad era el Chino Vizcarra y los enmascarados gritan vaaaamos el calamaaaar y se comen una picada entre todos y se van a jugar al conter fin.
-                            </div>
-                          </div>
-                        </div>
-                    </div> -->
-
-
-
-
-
-                    <!-- COLLAPSE -->
-
-                    <!-- <p class="boton-description margen-costadito">
-                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                            Descripción y especificaciones
-                        </button>
-                    </p>
-                    <div class="collapse margen-costadito collapse-description" id="collapseExample">
-                        <div class="card card-body">
-                            Martina Stoessel es una de las cantantes revolucionarias del pop argentino. en 2020, tras varios sencillos,
-                            estrena su primer disco CARLOS CARLOS CARLOS, donde narra las vivencias de un pibe de Caballito que es el hijo
-                            de tntecno jaja 27 lucas te imaginás bueno cuestión que el pibe es hincha de ferro y es durísimo porque los de
-                            ferro son medio muertos pero no le decimos nada porque se enoja y nos da con el paraguas así que vamos ferro
-                            ferrito lindo pasión de caballito todo verde carajo daaaale ferrooooooo te queremos ver campeón bueno ahora que
-                            carlitos ya se aburrió porque no está en japonés sigo como les contaba Adelaide y su marido se van a vivir a su
-                            casa de la infancia pero la de ella no la de los dos porque si no medio que serían hermanos y eso no está bueno
-                            bah que se yo es cultural pero los nenes pueden salir mogóeeeeee con condiciones especiales como le dicen ahora
-                            pero bueno eso aparecen unos locos con mascaras y le dicen o bela chiao bela chiao bela chiaochiaochiao y
-                            aparece rodrigo de la serna y Adelaide dice noooo rodrigo de la serna te amo soy re fan de Hermanos y Detectives
-                            pero en realidad era Ricardo Morfín montado en el pibe Emorfi y ella dice noooo me la conteineeeer es el papá
-                            del chino morfín y le ofrece una cocucha pero era coca live y el tipo le dice nooo es una poronga instiiiixxx y
-                            se saca la cara del asco y en realidad era el Chino Vizcarra y los enmascarados gritan vaaaamos el calamaaaar y
-                            se comen una picada entre todos y se van a jugar al conter fin.
-                        </div>
-                    </div> -->
+                    
 
                     <p class="description-completa margen-costadito">
-                        Martina Stoessel es una de las cantantes revolucionarias del pop argentino. en 2020, tras varios sencillos,
-                            estrena su primer disco CARLOS CARLOS CARLOS, donde narra las vivencias de un pibe de Caballito que es el hijo
-                            de tntecno jaja 27 lucas te imaginás bueno cuestión que el pibe es hincha de ferro y es durísimo porque los de
-                            ferro son medio muertos pero no le decimos nada porque se enoja y nos da con el paraguas así que vamos ferro
-                            ferrito lindo pasión de caballito todo verde carajo daaaale ferrooooooo te queremos ver campeón bueno ahora que
-                            carlitos ya se aburrió porque no está en japonés sigo como les contaba Adelaide y su marido se van a vivir a su
-                            casa de la infancia pero la de ella no la de los dos porque si no medio que serían hermanos y eso no está bueno
-                            bah que se yo es cultural pero los nenes pueden salir mogóeeeeee con condiciones especiales como le dicen ahora
-                            pero bueno eso aparecen unos locos con mascaras y le dicen o bela chiao bela chiao bela chiaochiaochiao y
-                            aparece rodrigo de la serna y Adelaide dice noooo rodrigo de la serna te amo soy re fan de Hermanos y Detectives
-                            pero en realidad era Ricardo Morfín montado en el pibe Emorfi y ella dice noooo me la conteineeeer es el papá
-                            del chino morfín y le ofrece una cocucha pero era coca live y el tipo le dice nooo es una poronga instiiiixxx y
-                            se saca la cara del asco y en realidad era el Chino Vizcarra y los enmascarados gritan vaaaamos el calamaaaar y
-                            se comen una picada entre todos y se van a jugar al conter fin.
+                        <%=product.description%>
                     </p>
 
                     <a href="#" class="btn btn-carrito margen-costadito"> Llevar en el carrito <i class="fas fa-shopping-cart"></i></a>

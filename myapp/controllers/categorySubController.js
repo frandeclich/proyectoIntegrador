@@ -1,3 +1,5 @@
+const mock_db=require('../data/productsData')
+
 module.exports={
     vinilos: (req,res)=>{
         res.render('categorySub',{
