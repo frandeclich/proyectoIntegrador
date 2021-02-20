@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('./adminPartials/head')  %> 
+<body>
+    <%- include('./adminPartials/header')  %> 
+
+    <main class="container">
+        <form action="/admin/products/update/<%= product.id %>?_method=PUT " method="POST">
+          <h3>Editar el producto</h3>
+          <hr>
+          <div class="row">
+            <div class="col-md-6 col-lg-4">
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="title" placeholder="marca" name="title" value="<%= product.title %> ">
+                <label for="title">Título</label>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="description" placeholder="Descripción" name="description" value="<%= product.description %> ">
+                <label for="description">Descripción</label>
+              </div>
+            </div>
+
+            <% if (product.condition) { %>
+                <div class="col-md-6 col-lg-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="condition" id="condition1" value="true" checked>
+                        <label class="form-check-label" for="condition1">
+                            Nuevo
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="condition" id="condition2" value="">
+                        <label class="form-check-label" for="condition2">
+                            Usado
+                        </label>
+                    </div>
+                </div>
+            <% } else { %>
+                <div class="col-md-6 col-lg-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="condition" id="condition1" value="true">
+                        <label class="form-check-label" for="condition1">
+                            Nuevo
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="condition" id="condition2" value="" checked>
+                        <label class="form-check-label" for="condition2">
+                            Usado
+                        </label>
+                    </div>
+                </div>            
+            <% } %>
+             
+
+            
+            <div class="col-md-6">
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="price" placeholder="Precio" name="price" value="<%= product.price %> ">
+                <label for="price">Precio</label>
+              </div>
+            </div>
+
+            <% if (product.featured) { %>
+                <div class="col-md-6 col-lg-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="featured" id="featured1" value="true" checked>
+                        <label class="form-check-label" for="featured1">
+                            Producto destacado
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="featured" id="featured2" value="">
+                        <label class="form-check-label" for="featured2">
+                            Producto no destacado
+                        </label>
+                    </div>
+                </div>
+            <% } else { %>
+                <div class="col-md-6 col-lg-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="featured" id="featured1" value="true">
+                        <label class="form-check-label" for="featured1">
+                            Producto destacado
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="featured" id="featured2" value="" checked>
+                        <label class="form-check-label" for="featured2">
+                            Producto no destacado
+                        </label>
+                    </div>
+                </div>            
+            <% } %>
+
+            <div class="col-lg-6">
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="imagen" placeholder="imagen" name="image" value="<%= product.image %> ">
+                <label for="imagen">Imagen</label>
+              </div>
+            </div>
+          
+          </div>
+        
+          <div class="d-grid gap-2">
+            <button class="btn btn-success" type="submit">Guardar los cambios</button>
+          </div>
+        
+         
+          </form>
+        </main>
+    <%- include('./adminPartials/footer')  %> 
+
+</body>
+</html>

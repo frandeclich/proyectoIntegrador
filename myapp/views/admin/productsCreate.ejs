@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('./adminPartials/head')  %> 
+<body>
+    <%- include('./adminPartials/header')  %> 
+
+    <main class="container">
+        <form action="/admin/products/store" method="POST" >
+          <!-- enctype="multipart/form-data" -->
+          <h3>Agregar un producto nuevo</h3>
+          <hr>
+          <div class="row">
+            <div class="col-md-6 col-lg-4">
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="title" placeholder="Nombre del producto" name="title">
+                <label for="title">Nombre del producto</label>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="description" placeholder="Una pequeña descripción" name="description">
+                <label for="description">Una pequeña descripción</label>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="condition" id="condition1" value="true">
+                    <label class="form-check-label" for="condition1">
+                        Nuevo
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="condition" id="condition2" value="" checked>
+                    <label class="form-check-label" for="condition2">
+                        Usado
+                    </label>
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="price" placeholder="Precio" name="price">
+                <label for="price">Precio</label>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="featured" id="featured1" value="true">
+                    <label class="form-check-label" for="featured1">
+                        Producto destacado
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="featured" id="featured2" value="" checked>
+                    <label class="form-check-label" for="featured2">
+                        Producto no destacado
+                    </label>
+                </div>
+            </div>
+
+
+            <!-- <div class="col-lg-6">
+              <div>
+                <input class="form-control form-control-lg" id="formFileLg" type="file" name="image">
+              </div>
+            </div> -->
+          
+          </div>
+        
+          <div class="d-grid gap-2">
+            <button class="btn btn-primary" type="submit">Guardar</button>
+          </div>
+        
+         
+          </form>
+        </main>
+    <%- include('./adminPartials/footer')  %> 
+
+</body>
+</html>
