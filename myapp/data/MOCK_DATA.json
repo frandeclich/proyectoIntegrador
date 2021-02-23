@@ -9,15 +9,6 @@
     "image": "acdc-1.jpg"
   },
   {
-    "id": 2,
-    "title": "Watcher, The",
-    "description": "Beam Radiation of Pituitary Gland using Electrons, Intraoperative",
-    "condition": false,
-    "featured": true,
-    "price": "$6906.79",
-    "image": "acdc-1.jpg"
-  },
-  {
     "id": 3,
     "title": "Fort McCoy",
     "description": "Magnetic Resonance Imaging (MRI) of Left Upper Extremity Veins using Other Contrast",

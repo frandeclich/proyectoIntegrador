@@ -48,8 +48,8 @@ module.exports = {
             condition:Boolean(condition),
             featured:Boolean(featured),
             price,
-            image : "acdc-1.jpg",
-            /* req.files[0].filename */
+            image : req.files[0].filename,
+            
         }
 
         products.push(product)
@@ -68,18 +68,27 @@ module.exports = {
             title:'Edita tu producto'
         })
     },
-    productsUpdate : (req,res) => {
-        const {title,description,condition,price,featured,image} = req.body;
+    productsUpdate : (req,res,next) => {
+        const {title,description,condition,price,featured} = req.body;
 
         products.forEach(product => {
             if(product.id === +req.params.id){
+                if (req.files) {
+                    if (product.image) {
+                        if(fs.existsSync(path.join('public','images',product.image))){
+                            fs.unlinkSync(path.join('public','images',product.image))
+                        }
+                    }
+                }
                 product.id = Number(req.params.id);
                 product.title = title;
                 product.description = description;
                 product.condition=Boolean(condition);
-                productfeatured=Boolean(featured);
+                product.featured=Boolean(featured);
                 product.price = price;
-                product.image=image;
+                product.image = req.files[0].filename
+                
+                
             }
         });
 
@@ -90,9 +99,11 @@ module.exports = {
         products.forEach(product => {
             if(product.id === +req.params.id){
 
-                /* if(fs.existsSync(path.join('public','images',product.image))){
-                    fs.unlinkSync(path.join('public','images',product.image))
-                } */
+                if (product.image) {
+                    if(fs.existsSync(path.join('public','images',product.image))){
+                        fs.unlinkSync(path.join('public','images',product.image))
+                    }
+                }
                 var aEliminar = products.indexOf(product);
                 products.splice(aEliminar,1)
             }
@@ -105,61 +116,4 @@ module.exports = {
 
 
 
-/* register : (req,res) =>{
-        res.render('admin/register')
-    },
-    login : (req, res) => {
-        res.render('admin/login')
-    },
-    processRegister : (req, res) => {
 
-        const errores = validationResult(req);
-
-        if(!errores.isEmpty()){
-            return res.render('admin/register',{
-                errores : errores.mapped(),
-                old : req.body
-            })
-        }else{
-
-        const {username, pass} = req.body;
-
-        let lastID = 0;
-        admins.forEach(admin => {
-            if (admin.id > lastID) {
-                lastID = admin.id
-            }
-        });
-
-        let passHash = bcrypt.hashSync(pass.trim(),12)
-
-        const newAdmin = {
-            id : +lastID + 1,
-            username: username.trim(),
-            pass : passHash
-        }
-
-        admins.push(newAdmin);
-
-        setAdmins(admins);
-
-        res.redirect('/admin/login');
-
-         }
-
-    },
-    processLogin : (req,res) => {
-        const {username, pass} = req.body;
-
-        let result = admins.find(admin => admin.username.toLowerCase() === username.toLowerCase().trim());
-
-        if(result){
-            if(bcrypt.compareSync(pass.trim(),result.pass)){
-                return res.redirect('/admin')
-            }
-        }
-        res.render('admin/login',{
-            error : "Credenciales inválidas!"
-        })
-
-    },*/

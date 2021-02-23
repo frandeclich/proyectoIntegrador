@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-/* const upload = require('../middlewares/subidaImagenes');
-const registerAdminValidator = require('../validations/registerAdminValidator'); */
+const upload = require('../middlewares/subidaImagenes');
+/* const registerAdminValidator = require('../validations/registerAdminValidator'); */
 
 
 const {productsList,productsCreate,productsDelete,productsEdit,productsStore,productsUpdate} = require('../controllers/adminController');
@@ -29,10 +29,10 @@ router.post('/login',processLogin);
 router.get('/products',productsList);
 
 router.get('/products/create', productsCreate);
-router.post('/products/store',productsStore);
+router.post('/products/store',upload.any(),productsStore);
 
 router.get('/products/edit/:id',productsEdit);
-router.put('/products/update/:id/',productsUpdate);
+router.put('/products/update/:id/',upload.any(),productsUpdate);
 
 router.delete('/products/delete/:id',productsDelete);
 
