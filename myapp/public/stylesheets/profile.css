@@ -1,0 +1,41 @@
+main{
+    min-height: 70vh;
+    margin:3rem 4.5rem;
+}
+.profile-email{
+    font-size: 6rem;
+    margin-top: 15rem;
+    font-weight: bold;
+}
+.btn-profile-carrito{
+    width: 100%;
+    margin-top: 15rem;
+    font-size: 4rem;
+    padding: 1rem;
+}
+.btn-profile-logout{
+    width: 100%;
+    margin-top: 5rem;
+    font-size: 4rem;
+    padding: 1rem;
+}
+
+
+.modal{
+    font-size: 3.5rem;
+}
+.modal-header{
+    padding-right: 3rem;
+}
+.modal-title{
+    font-size: 4rem;
+}
+.modal-content{
+    min-width:70vw;
+    margin: -8rem;
+}
+.btn-profile-logout-modal{
+    width: 100%;
+    font-size: 3rem;
+    padding: 1rem;
+}

@@ -15,29 +15,54 @@
                     <form class="form-login-bt" method="POST" action="">
                         <div class="mb-3">
                           <label for="email" class="form-label">Email</label>
+                          <br>
+                          <% if (typeof errors != 'undefined'&& errors.email) { %>
+                            
+                            <label for="email" class="text-danger"><%= errors.email.msg %></label>
+                            
+                           <% } %>
                           <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
-                          name="email" placeholder="vntgsound@hotmail.com">
+                          name="email" placeholder="vntgsound@hotmail.com" value="<%= (typeof old != 'undefined' && old.email) ? old.email : ""%>">
+                          
                         </div>
                         <div class="mb-3">
                             <label for="emailconfirm" class="form-label">Repetí tu email</label>
+                            <br>
+                          <% if (typeof errors != 'undefined'&& errors.emailconfirm) { %>
+                            
+                            <label for="emailconfirm" class="text-danger"><%= errors.emailconfirm.msg %></label>
+                            
+                           <% } %>
                             <input type="email" class="form-control" id="emailconfirm" aria-describedby="emailHelp"
                             name="emailconfirm" placeholder="vntgsound@hotmail.com">
                         </div>
 
                         <div class="mb-3">
                           <label for="pass" class="form-label">Contraseña</label>
+                          <% if (typeof errors != 'undefined'&& errors.pass) { %>
+                            
+                            <label for="pass" class="text-danger"><%= errors.pass.msg %></label>
+                            
+                           <% } %>
                           <input type="password" class="form-control" id="pass"
                           name="pass">
                         </div>
                         <div class="mb-3">
                             <label for="passconfirm" class="form-label">Repetí tu contraseña</label>
+                            <% if (typeof errors != 'undefined'&& errors.passconfirm) { %>
+                            
+                                <label for="passconfirm" class="text-danger"><%= errors.passconfirm.msg %></label>
+                                
+                               <% } %>
                             <input type="password" class="form-control" id="passconfirm"
                             name="passconfirm">
                         </div>
 
+                        
+
                         <button type="submit" class="btn btn-success btn-submit-login">Crear mi cuenta</button>
                         <a href="/user/login" class="btn btn-primary btn-login-register">Ya tengo cuenta, iniciar sesión</a>
-                      </form>
+                    </form>
 
                 </div>
             </main>

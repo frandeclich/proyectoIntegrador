@@ -1,15 +1,26 @@
 var express = require('express');
+const { logout, processRegister, register, login, processLogin, micarrito, profile } = require('../controllers/usersController');
 var router = express.Router();
 const usersController = require('../controllers/usersController')
 
+const onlyGuestsMiddleware = require('../middlewares/onlyGuestsMiddleware');
+const onlyUsersMiddleware = require('../middlewares/onlyUsersMiddleware');
+
+const registerValidator = require('../validations/registerValidator')
+
+
+
 
 /* GET users listing. */
-router.get('/login', usersController.login);
-router.post('/login',usersController.processLogin)
+router.get('/login',onlyGuestsMiddleware, login);
+router.post('/login',processLogin)
 
-router.get('/register',usersController.register)
-router.post('/register',usersController.processRegister)
+router.get('/register',onlyGuestsMiddleware,register)
+router.post('/register',registerValidator,processRegister)
 
-router.get('/micarrito',usersController.micarrito)
+router.get('/logout',logout)
 
-module.exports = router;
+router.get('/micarrito',onlyUsersMiddleware,micarrito)
+router.get('/profile',onlyUsersMiddleware,profile)
+
+module.exports = router;  

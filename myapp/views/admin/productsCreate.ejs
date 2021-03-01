@@ -1,29 +1,41 @@
 <!DOCTYPE html>
 <html lang="es">
 <%- include('./adminPartials/head')  %> 
+</head>
 <body>
     <%- include('./adminPartials/header')  %> 
 
-    <main class="container">
+    <main class="container mt-3">
         <form action="/admin/products/store" method="POST" enctype="multipart/form-data">
           
           <h3>Agregar un producto nuevo</h3>
           <hr>
           <div class="row">
             <div class="col-md-6 col-lg-4">
+
+              <% if (typeof errors != 'undefined' && errors.title) { %>
+               <h6 class="text-danger"><%= errors.title.msg %> </h6>
+              <% } %>
+
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="title" placeholder="Nombre del producto" name="title">
+                <input type="text" class="form-control" id="title" placeholder="Nombre del producto" name="title" value="<%= (typeof old != 'undefined' && old.title) ? old.title : ""%>">
                 <label for="title">Nombre del producto</label>
               </div>
             </div>
             <div class="col-md-6 col-lg-4">
+
+              <% if (typeof errors != 'undefined' && errors.description) { %>
+                <h6 class="text-danger"><%= errors.description.msg %> </h6>
+               <% } %>
+
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="description" placeholder="Una pequeña descripción" name="description">
+                <input type="text" class="form-control" id="description" placeholder="Una pequeña descripción" name="description" value="<%= (typeof old != 'undefined' && old.description) ? old.description : ""%>">
                 <label for="description">Una pequeña descripción</label>
               </div>
-            </div>
+            </div> 
+            
 
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-6 col-lg-4 ">
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="condition" id="condition1" value="true">
                     <label class="form-check-label" for="condition1">
@@ -39,14 +51,21 @@
             </div>
 
 
-            <div class="col-md-6">
+            <div class="col-md-6 mt-2">
+
+              <% if (typeof errors != 'undefined' && errors.price) { %>
+                <h6 class="text-danger"><%= errors.price.msg %> </h6>
+               <% } %>
+
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="price" placeholder="Precio" name="price">
+                <input type="text" class="form-control" id="price" placeholder="Precio" name="price" value="<%= (typeof old != 'undefined' && old.price) ? old.price : ""%>">
                 <label for="price">Precio</label>
               </div>
             </div>
 
-            <div class="col-md-6 col-lg-4">
+            
+
+            <div class="col-md-6 col-lg-4 mt-2">
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="featured" id="featured1" value="true">
                     <label class="form-check-label" for="featured1">
@@ -62,15 +81,32 @@
             </div>
 
 
-            <div class="col-lg-6">
+            <div class="col-lg-6 mt-2">
               <div>
                 <input class="form-control form-control-lg" id="formFileLg" type="file" name="product">
               </div>
             </div>
-          
+            
+            <div class="col-md-6 col-lg-4 mt-2">
+              <% if (typeof errors != 'undefined' && errors.category) { %>
+                <h6 class="text-danger"><%= errors.category.msg %> </h6>
+              <% } %>
+
+              <div class="select">
+                
+                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="select-category" name="category">
+                  <option value="" selected hidden>Categorías</option>
+                  <option value="vinilo">Vinilos</option>
+                  <option value="cd">CD'S</option>
+                  <option value="cassette">Cassettes</option>
+                  <option value="speaker">Periféricos y más</option>
+                </select>
+              </div>
+            </div>
+
           </div>
         
-          <div class="d-grid gap-2">
+          <div class="d-grid gap-2 mt-3">
             <button class="btn btn-primary" type="submit">Guardar</button>
           </div>
         

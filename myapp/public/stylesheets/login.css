@@ -45,3 +45,7 @@
     font-size: 4rem;
     padding: 1rem;
 }
+
+p.error-danger{
+    font-size: 4.5rem;
+}

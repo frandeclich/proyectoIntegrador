@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <%- include('./adminPartials/head')  %> 
+<link rel="stylesheet" href="/stylesheets/admin/products.css">
+</head>
 <body>
     <%- include('./adminPartials/header')  %> 
 
@@ -14,17 +16,17 @@
                       <%= product.title %> 
                   </h4>
                 </li>
-                <li class="list-group-item">
-                  <h5>
-                    <%= product.description %> 
+                <!-- <li class="list-group-item">
+                  <h5 >
+                    <%= product.description.slice(0,100) %>... 
                   </h5>
-                </li>
+                </li> -->
 
                 
 
                 <li class="list-group-item">
-                  <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal-<%= product.id %> ">
-                  <%= product.image %></a>
+                  <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal-<%= product.id %> " class="no-text-decoration">
+                  Información de este producto</a>
                 </li>
                 <li class="list-group-item">
                   <div class="m-2 d-flex justify-content-around">
@@ -40,19 +42,36 @@
               <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h6 class="modal-title" id="exampleModalLabel"><%= product.title %> - <%= product.description %> </h6>
+                    <h6 class="modal-title" id="exampleModalLabel"><%= product.title %></h6>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    
                   </div>
+                  
                   <div class="modal-body">
+                    <h6 class="modal-title text-align-center mb-2">
+                      <%= product.description %>
+                    </h6>
+                    <h6 class="modal-title text-align-center mb-2">
+                      <%= product.price %> 
+                    </h6>
                     <img src="/images/<%= product.image %> " class="img-fluid" alt="">
+                    <p class="text-align-center"><%= product.image %> </p>
                   </div>
 
+                  <li class="list-group-item">
+                    <div class="m-2 d-flex justify-content-around">
+                      <a href="/admin/products/edit/<%= product.id %> " class="btn btn-sm btn-success editar-modal">Editar</a>
+                    </div>
+                    
 
-                  <div class="m-2 d-flex justify-content-around">
-                   <form action="/admin/products/delete/<%= product.id %>?_method=DELETE " method="POST">
-                     <button class="btn btn-sm btn-danger" type="submit">Eliminar</button>
-                   </form>
-                  </div>
+                    <div class="m-2 d-flex justify-content-around">
+                    <form action="/admin/products/delete/<%= product.id %>?_method=DELETE " method="POST">
+                    <button class="btn btn-sm btn-danger"  type="submit">Eliminar</button>
+                    </form>
+                    </div>
+
+                </li>
+
                 </div>
               </div>
             </div>

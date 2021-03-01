@@ -1,0 +1,51 @@
+<html>
+<!-- HEAD -->
+<%- include('partials/head') %>
+    <link rel="stylesheet" href="/stylesheets/profile.css">
+    </head>
+
+    <body>
+        <div class="contenedor">
+            <!-- HEADER -->
+            <%- include('partials/header') %>
+            <main>
+                <div class="mb-3">
+                    <h2 class="profile-email">
+                        Email: <br> <%= locals.user.email %> 
+                    </h2>
+                    <a href="/user/micarrito" class="btn btn-primary btn-profile-carrito">Mi carrito</a>
+                    <a class="btn btn-danger btn-profile-logout" data-bs-toggle="modal" data-bs-target="#modallogout">Cerrar sesión</a>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="modallogout" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h6 class="modal-title" id="exampleModalLabel">   ¿Seguro que querés cerrar sesión?</h6>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          Podés volver a iniciar sesión cuando quieras.
+                        </div>
+      
+                        
+                        <a href="/user/logout" class="btn btn-sm btn-danger btn-profile-logout-modal" >Cerrar sesión</a>
+
+                        <!-- <div class="m-2 d-flex justify-content-around">
+                         <a href=""></a>
+                           <button class="btn btn-sm btn-danger btn-profile-logout-modal" type="submit">Cerrar Sesión</button>
+                         
+                        </div> -->
+                      </div>
+                    </div>
+                  </div>
+            </main>
+                
+
+            <!-- FOOTER -->
+            <%- include('partials/footer') %>
+    </body>
+
+</html>

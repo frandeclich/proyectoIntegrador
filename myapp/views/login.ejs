@@ -11,20 +11,7 @@
             <main>
                 <div class="caja-login">
                     <h2 class="login-title">Iniciar Sesión:</h2>
-                    <!-- <form action="" class="form-login">
-                        <div class="email-input-login">
-                            <label for="email">Email:</label>
-                            <input type="email" name="email" id="email" placeholder="Email">
-                        </div>
-                        <div class="pass-input-login">
-                            <label for="pass">Contraseña:</label>
-                            <input type="password" name="pass" id="pass">
-                        </div>
-                        <div class="check-login">
-                            <input type="checkbox" name="rememberme" id="rememberme" ><label for="rememberme">Recordarme</label>
-                        </div>
-                        <button type="submit">Iniciar Sesión</button>                        
-                    </form> -->
+                    
                     <form class="form-login-bt" method="POST" action="">
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
@@ -40,6 +27,13 @@
                           <input type="checkbox" class="form-check-input" id="rememberme" name="rememberme">
                           <label class="form-check-label" for="rememberme">Recordarme</label>
                         </div>
+                        <% if (typeof error !== 'undefined') { %>
+                            <div class="mb-3">
+                                <p class="text-danger error-danger">
+                                    <%= error %> 
+                                </p>
+                            </div>
+                        <% } %>
                         <button type="submit" class="btn btn-primary btn-submit-login">Iniciar Sesión</button>
                         <a href="/user/register" class="btn btn-success btn-login-register">Crear mi cuenta</a>
                       </form>

@@ -1,4 +1,3 @@
-const { get } = require('http');
 const path = require('path');
 const {getMock} = require(path.join('..','data','productsData'));
 

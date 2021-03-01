@@ -10,7 +10,7 @@
       <%- include('partials/header') %> 
       <main>
         <banner class="fluid col-12">
-          <img src="images/banner-prueba.png" alt="banner">
+          <img src="images/always/banner-prueba.png" alt="banner">
         </banner>
         <h2>Nuestros destacados:</h2>
         
@@ -22,11 +22,11 @@
                 <div class="articulo d-block">
                   <article>
                     <div class="image">
-                      <a href=""><img src="images/<%= product.image %> " alt="Imagen"></a>
+                      <a href="/detail/<%= product.id %> "><img src="images/<%= product.image %> " alt="Imagen"></a>
                     </div>
                     <div class="description row">
-                      <a href="" class="nombre"><%= product.title %></a>
-                      <a href="" class="price success"><%= product.price %></a>
+                      <a href="/detail/<%= product.id %>" class="nombre"><%= product.title %></a>
+                      <a href="/detail/<%= product.id %>" class="price success"><%= product.price %></a>
                     </div>  
                   </article>
                 </div>
@@ -47,7 +47,7 @@
             <article class="categoria col-6">
               <div class="caja">
                 <div class="image">
-                  <a href="/category/vinilos"><img src="images/caja-vinilos.webp" alt="imagen-vinilos"></a>
+                  <a href="/category/vinilos"><img src="images/always/caja-vinilos.webp" alt="imagen-vinilos"></a>
                 </div>
                 <div class="epigrafe">
                   <p>VINILOS</p>
@@ -58,7 +58,7 @@
             <article class="categoria col-6">
               <div class="caja">
                 <div class="image">
-                  <a href="/category/cds"><img src="images/cds.png" alt="imagen-vinilos"></a>
+                  <a href="/category/cds"><img src="images/always/cds.png" alt="imagen-vinilos"></a>
                 </div>
                 <div class="epigrafe">
                   <p>CD'S</p>
@@ -69,7 +69,7 @@
             <article class="categoria col-6">
               <div class="caja">
                 <div class="image">
-                  <a href="/category/cassettes"><img src="images/cssettes.png" alt="imagen-vinilos"></a>
+                  <a href="/category/cassettes"><img src="images/always/cssettes.png" alt="imagen-vinilos"></a>
                 </div>
                 <div class="epigrafe">
                   <p>CASSETTES</p>
@@ -80,7 +80,7 @@
             <article class="categoria col-6">
               <div class="caja">
                 <div class="image">
-                  <a href="/category/speakers"><img src="images/speakers.png" alt="imagen-vinilos"></a>
+                  <a href="/category/speakers"><img src="images/always/speakers.png" alt="imagen-vinilos"></a>
                 </div>
                 <div class="epigrafe" name="1">
                   <p>PERIFÉRICOS</p>

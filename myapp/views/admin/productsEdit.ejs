@@ -1,21 +1,34 @@
 <!DOCTYPE html>
 <html lang="es">
 <%- include('./adminPartials/head')  %> 
+</head>
 <body>
     <%- include('./adminPartials/header')  %> 
 
-    <main class="container">
+    <main class="container mt-3">
         <form action="/admin/products/update/<%= product.id %>?_method=PUT " method="POST" enctype="multipart/form-data">
           <h3>Editar el producto</h3>
           <hr>
           <div class="row">
             <div class="col-md-6 col-lg-4">
+
+                <% if (typeof errors != 'undefined' && errors.title) { %>
+                    <h6 class="text-danger"><%= errors.title.msg %> </h6>
+                   <% } %>
+
               <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="title" placeholder="marca" name="title" value="<%= product.title %> ">
                 <label for="title">Título</label>
               </div>
             </div>
+
+
             <div class="col-md-6 col-lg-4">
+
+                <% if (typeof errors != 'undefined' && errors.description) { %>
+                    <h6 class="text-danger"><%= errors.description.msg %> </h6>
+                   <% } %>
+
               <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="description" placeholder="Descripción" name="description" value="<%= product.description %> ">
                 <label for="description">Descripción</label>
@@ -56,7 +69,12 @@
              
 
             
-            <div class="col-md-6">
+            <div class="col-md-6 mt-2">
+
+                <% if (typeof errors != 'undefined' && errors.price) { %>
+                    <h6 class="text-danger"><%= errors.price.msg %> </h6>
+                   <% } %>
+
               <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="price" placeholder="Precio" name="price" value="<%= product.price %> ">
                 <label for="price">Precio</label>
@@ -95,23 +113,33 @@
                 </div>            
             <% } %>
 
-            <!-- <div class="col-lg-6">
-              <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="imagen" placeholder="imagen" name="image" value="<%= product.image %> ">
-                <label for="imagen">Imagen</label>
-              </div>
-            </div> -->
-
-            <div class="col-lg-6">
+            <div class="col-lg-6 mt-0">
                 <div>
                     <label for="formFileLg">Cambio de Imagen (CAMPO OBLIGATORIO)</label>
-                    <input class="form-control form-control-lg" id="formFileLg" type="file" name="product">
+                    <input class="form-control form-control-lg" id="formFileLg" type="file" name="product" mt-1>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 mt-4">
+                <% if (typeof errors != 'undefined' && errors.category) { %>
+                  <h6 class="text-danger"><%= errors.category.msg %> </h6>
+                <% } %>
+  
+                <div class="select">
+                  
+                  <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="select-category" name="category">
+                    <option value="" selected hidden>Categorías</option>
+                    <option value="vinilo">Vinilos</option>
+                    <option value="cd">CD'S</option>
+                    <option value="cassette">Cassettes</option>
+                    <option value="speaker">Periféricos y más</option>
+                  </select>
                 </div>
               </div>
           
           </div>
         
-          <div class="d-grid gap-2">
+          <div class="d-grid gap-2 mt-3">
             <button class="btn btn-success" type="submit">Guardar los cambios</button>
           </div>
         

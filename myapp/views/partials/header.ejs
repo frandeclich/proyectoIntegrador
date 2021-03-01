@@ -6,8 +6,15 @@
         <a href="#barra" class="link"><i class="fas fa-bars"></i></a>
         <div class="nav-bg" id="barra">
           <ul class="barra-nav">
-            <li class="item-li"><a href="/user/login" class="item-nav">Iniciar Sesión</a></li>
-            <li class="item-li"><a href="/user/register" class="item-nav">Registrarme</a></li>
+            <% if (locals.user) { %>
+              <li class="item-li"><a href="/user/logout" class="item-nav">Cerrar sesión</a></li>
+              <li class="item-li"><a href="/user/profile" class="item-nav">Mi perfil</a></li>
+            <% } %>
+            <% if (!locals.user) { %>
+              <li class="item-li"><a href="/user/login" class="item-nav">Iniciar sesión</a></li>
+              <li class="item-li"><a href="/user/register" class="item-nav">Registrarme</a></li>
+            <% } %>           
+            
             <li class="item-li"><a href="/user/micarrito" class="item-nav">Mi carrito</a></li>
             <li class="item-li"><a href="#" class="item-nav">Mis favoritos</a></li>
             <li class="item-li"><a href="/category/vinilos" class="item-nav">Vinilos</a></li>
@@ -29,10 +36,10 @@
       <div class="caja-busqueda" id="searching">
         <form action="/search" method="GET">
           <div class="caja-no-busqueda">
-            <input type="search" class="busqueda" placeholder="Busca un producto..." name="search">
+            <input type="search" class="busqueda" placeholder="Busca un producto..." name="search" <% if (typeof query != 'undefined') { %>value="<%= query %> "<% } %> >
             <a href="#" class="cross">
               <i class="fas fa-times"></i>
-            </a>
+            </a> 
             <button type="submit" class="boton-busqueda">
               <i class="fas fa-search submitt"></i>
             </button>

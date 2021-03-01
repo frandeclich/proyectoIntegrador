@@ -4,11 +4,16 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var methodOverride = require('method-override')
+var session = require('express-session')
 
 var homeRouter = require('./routes/homeRouter');
 var categorySub = require('./routes/categorySubRouter');
 var usersRouter =require('./routes/usersRouter')
 var adminRouter =require('./routes/adminRouter')
+
+var recordameMiddleware = require('./middlewares/remembermeMiddleware');
+var sessionToLocalsMiddleware = require('./middlewares/sessionToLocalsMiddleware');
+
 
 var app = express();
 
@@ -22,6 +27,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'))
+app.use(session({secret: "Mensaje de vintage sound"}))
+
+app.use(recordameMiddleware)
+app.use(sessionToLocalsMiddleware)
 
 app.use('/', homeRouter);
 app.use('/category', categorySub);
