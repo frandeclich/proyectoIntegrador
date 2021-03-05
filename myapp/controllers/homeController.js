@@ -1,39 +1,79 @@
-const path = require('path');
-const {getMock} = require(path.join('..','data','productsData'));
+const db = require("../database/models");
+const { Op } = require("sequelize");
 
-module.exports={
-    home: (req,res)=>{
-        let featured = getMock().filter(product=>{
-            return product.featured==true
-        })
-
-        res.render('home',{
-            title:'Inicio',
-            products:getMock,
-            featured
-        })
+module.exports = {
+    home: (req, res) => {
+        db.Product.findAll()
+            .then((products) => {
+                let featured = products.filter((product) => {
+                    return product.featured == true;
+                });
+                return res.render("home", {
+                    title: "Inicio",
+                    featured,
+                });
+            })
+            .catch((error) => {
+                res.send(error);
+            });
     },
-    search: (req,res)=>{
-        const products = getMock().filter(product => {
-            return product.title.toLowerCase().includes(req.query.search.toLowerCase())
+    search: (req, res) => {
+        let query = req.query.search;
+
+        db.Product.findAll({
+            where: {
+                [Op.or]:[
+                    {title: {
+                        [Op.like]:`%${query}%`,
+                    }},
+                    {description:{
+                        [Op.like]:`%${query}%`
+                    }}
+                ]
+            },
+            include: [
+                {
+                    association: "category",
+                },
+                {
+                    association: "admin",
+                },
+            ],
         })
-        let query=req.query.search
-        res.render('search',{
-            title:'Resultado de tu búsqueda "'+query+'"',
-            products,
-            query
-        })
-        
+            .then((products) => {
+                
+                return res.render("search", {
+                    title: 'Resultado de tu búsqueda "' + query + '"',
+                    products,
+                    query,
+                });
+            })
+            .catch((error) => {
+                res.send(error);
+            });
     },
-    detail:(req,res)=>{
-        let product = getMock().find(product=>product.id ===  Number(req.params.id));
-
-        /* res.send(product) */
-        res.render('detail',{
-            title:'Detalle del producto "'+product.title+'"',
-            products:getMock,
-            product
+    detail: (req, res) => {
+        db.Product.findOne({
+            where: {
+                id:req.params.id
+            },
+            include: [
+                {
+                    association: "category",
+                },
+                {
+                    association: "admin",
+                },
+            ],
         })
-    }
-}
-
+            .then((product) => {
+                return res.render("detail", {
+                    title: 'Detalle del producto "' + product.title + '"',
+                    product,
+                });
+            })
+            .catch((error) => {
+                res.send(error);
+            });
+    },
+};

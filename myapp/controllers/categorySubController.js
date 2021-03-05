@@ -1,61 +1,87 @@
-const mock_db=require('../data/productsData')
-const path = require('path');
-const {getMock} = require(path.join('..','data','productsData'));
-const allProducts = getMock()
+const db = require("../database/models");
+const { Op } = require("sequelize");
 
 
-module.exports={
-    vinilos: (req,res)=>{
-        let products = allProducts.filter(product=>{
-            return product.category=="vinilo"
+module.exports = {
+    vinilos: (req, res) => {
+        db.Product.findAll({
+            where: {
+                category_id: 1
+            }
         })
-        let featured = products.filter(product=>{
-            return product.featured==true
-        })
-        res.render('categorySub',{
-            title: 'Vinilos',
-            products,
-            featured
-        })
+            .then((products) => {
+                let featured = products.filter((product) => {
+                    return product.featured == true;
+                });
+                return res.render('categorySub', {
+                    title: 'Vinilos',
+                    products,
+                    featured
+                })
+            })
+            .catch((error) => {
+                res.send(error);
+            });
     },
-    cds:(req,res)=>{
-        let products = allProducts.filter(product=>{
-            return product.category=="cd"
+    cds: (req, res) => {
+        db.Product.findAll({
+            where: {
+                category_id: 2
+            }
         })
-        let featured = products.filter(product=>{
-            return product.featured==true
-        })
-        res.render('categorySub',{
-            title: "CD'S",
-            products,
-            featured
-        })
+            .then((products) => {
+                let featured = products.filter((product) => {
+                    return product.featured == true;
+                });
+                return res.render('categorySub', {
+                    title: "CD'S",
+                    products,
+                    featured
+                })
+            })
+            .catch((error) => {
+                res.send(error);
+            });
     },
-    cassettes:(req,res)=>{
-        let products = allProducts.filter(product=>{
-            return product.category=="cassette"
+    cassettes: (req, res) => {
+        db.Product.findAll({
+            where: {
+                category_id: 3
+            }
         })
-        let featured = products.filter(product=>{
-            return product.featured==true
-        })
-        res.render('categorySub',{
-            title:'Cassettes',
-            products,
-            featured
-        })
+            .then((products) => {
+                let featured = products.filter((product) => {
+                    return product.featured == true;
+                });
+                return res.render('categorySub', {
+                    title: 'Cassettes',
+                    products,
+                    featured
+                })
+            })
+            .catch((error) => {
+                res.send(error);
+            });
     },
-    speakers:(req,res)=>{
-        let products = allProducts.filter(product=>{
-            return product.category=="speaker"
+    speakers: (req, res) => {
+        db.Product.findAll({
+            where: {
+                category_id: 4
+            }
         })
-        let featured = products.filter(product=>{
-            return product.featured==true
-        })
-        res.render('categorySub',{
-            title:'Periféricos',
-            products,
-            featured
-        })
+            .then((products) => {
+                let featured = products.filter((product) => {
+                    return product.featured == true;
+                });
+                return res.render('categorySub', {
+                    title: 'Periféricos',
+                    products,
+                    featured
+                })
+            })
+            .catch((error) => {
+                res.send(error);
+            });
     }
 
 }

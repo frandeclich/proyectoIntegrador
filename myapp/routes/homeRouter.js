@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const db = require('../database/models')
 const homeController = require('../controllers/homeController')
 const {home,search,detail}=homeController
 
