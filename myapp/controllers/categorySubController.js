@@ -6,7 +6,8 @@ module.exports = {
     vinilos: (req, res) => {
         db.Product.findAll({
             where: {
-                category_id: 1
+                category_id: 1,
+                exists:1
             }
         })
             .then((products) => {
@@ -26,7 +27,8 @@ module.exports = {
     cds: (req, res) => {
         db.Product.findAll({
             where: {
-                category_id: 2
+                category_id: 2,
+                exists:1
             }
         })
             .then((products) => {
@@ -46,7 +48,8 @@ module.exports = {
     cassettes: (req, res) => {
         db.Product.findAll({
             where: {
-                category_id: 3
+                category_id: 3,
+                exists:1
             }
         })
             .then((products) => {
@@ -66,7 +69,8 @@ module.exports = {
     speakers: (req, res) => {
         db.Product.findAll({
             where: {
-                category_id: 4
+                category_id: 4,
+                exists:1
             }
         })
             .then((products) => {
@@ -74,7 +78,7 @@ module.exports = {
                     return product.featured == true;
                 });
                 return res.render('categorySub', {
-                    title: 'Periféricos',
+                    title: 'Periféricos y otros',
                     products,
                     featured
                 })

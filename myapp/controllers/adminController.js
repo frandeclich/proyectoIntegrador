@@ -17,7 +17,9 @@ module.exports = {
 
 
     productsList: (req, res) => {
-        db.Product.findAll()
+        db.Product.findAll({
+            where:{exists:1}
+        })
             .then((products) => {
                 return res.render('admin/products', {
                     title: 'Listado de productos',
@@ -41,7 +43,8 @@ module.exports = {
                             [Op.like]: `%${query}%`
                         }
                     }
-                ]
+                ],
+                exists:1
             }
         })
             .then((products) => {
@@ -53,11 +56,12 @@ module.exports = {
             })
             .catch((error) => { res.send(error) })
     },
-    productsCreate: (req, res) => {
-
-        res.render('admin/productsCreate', {
-            title: 'Crear un nuevo producto'
+    productsCreate: (req, res) => {      
+        return res.render('admin/productsCreate', {
+            title: 'Crear un nuevo producto',
+            
         })
+           
     },
     productsStore: (req, res, next) => {
 
@@ -80,7 +84,7 @@ module.exports = {
             })
         } else {
             let lastID = 1;
-            db.Product.findAll()
+            db.Product.findAll({where:{exists:1}})
                 .then((products) => {
                     products.forEach(product => {
                         if (product.id > lastID) {
@@ -94,7 +98,6 @@ module.exports = {
                     }
                     var admin_id = 1
                     var exists = 1
-                    var categoryr = 2
                     db.Product.create({
                         title: title,
                         description: description,
@@ -102,7 +105,7 @@ module.exports = {
                         featured: Boolean(featured),
                         price: price,
                         image: image,
-                        category_id: categoryr,
+                        category_id: category,
                         admin_id: admin_id,
                         exists: exists
                     })
@@ -117,77 +120,98 @@ module.exports = {
     },
     productsEdit: (req, res) => {
 
-        const product = products.find(product => product.id === +req.params.id);
-
-        res.render('admin/productsEdit', {
-            product,
-            title: 'Edita tu producto'
+        db.Product.findOne({
+            where:{
+                id:req.params.id,
+                exists:1
+            },
+            include: [
+                {association: "category",}
+            ],
         })
+        .then((product)=>{
+            return res.render('admin/productsEdit', {
+                product,
+                title: 'Edita tu producto'
+            })
+        })
+        .catch((error) => { res.send(error) })
+        
     },
     productsUpdate: (req, res, next) => {
         const { title, description, condition, price, featured, category } = req.body;
 
         const errors = validationResult(req)
 
-        if (!errors.isEmpty()) {
-            if (req.files[0]) {
-
-                if (fs.existsSync(path.join('public', 'images', req.files[0].filename))) {
-                    fs.unlinkSync(path.join('public', 'images', req.files[0].filename))
+        db.Product.findOne({
+            where:{id:req.params.id},
+            include: [
+                {
+                    association: "category",
+                },
+                {
+                    association: "admin",
+                },
+            ],
+        })
+        .then((product)=>{
+            if (!errors.isEmpty()) {
+                if (req.files[0]) {
+    
+                    if (fs.existsSync(path.join('public', 'images', req.files[0].filename))) {
+                        fs.unlinkSync(path.join('public', 'images', req.files[0].filename))
+                    }
                 }
-            }
-            const product = products.find(product => product.id === +req.params.id);
-            return res.render('admin/productsEdit', {
-                title: 'Realice el formulario otra vez.',
-                errors: errors.mapped(),
-                product
-            })
-        } else {
-
-            products.forEach(product => {
-                if (product.id === +req.params.id) {
-
-                    product.id = Number(req.params.id);
-                    product.title = title;
-                    product.description = description;
-                    product.condition = Boolean(condition);
-                    product.featured = Boolean(featured);
-                    product.price = price;
-                    if (req.files[0]) {
-                        if (product.image) {
-                            if (fs.existsSync(path.join('public', 'images', product.image))) {
-                                fs.unlinkSync(path.join('public', 'images', product.image))
-                                product.image = req.files[0].filename
-                            }
+                return res.render('admin/productsEdit', {
+                    title: 'Realice el formulario otra vez.',
+                    errors: errors.mapped(),
+                    product
+                })
+            } else {
+                if (req.files[0]) {
+                    if (product.image) {
+                        if (fs.existsSync(path.join('public', 'images', product.image))) {
+                            fs.unlinkSync(path.join('public', 'images', product.image))
+                            var image = req.files[0].filename
                         }
                     }
-                    product.category = category
-
-
-
                 }
-            });
-
-            setMock(products);
-            res.redirect('/admin/products');
-        }
+                db.Product.update({
+                    title:title,
+                    description:description,
+                    condition:Boolean(condition),
+                    featured : Boolean(featured),
+                    price : price,
+                    image: image,
+                    category_id: category,
+                },
+                {
+                    where:{
+                        id:req.params.id
+                    }
+                })
+                .then(()=>{
+                    res.redirect('/admin/products');
+                })
+                .catch((error) => { res.send(error) })
+            }
+        })
+        .catch((error) => { res.send(error) })
+        
     },
     productsDelete: (req, res) => {
-        products.forEach(product => {
-            if (product.id === +req.params.id) {
-
-                if (product.image) {
-                    if (fs.existsSync(path.join('public', 'images', product.image))) {
-                        fs.unlinkSync(path.join('public', 'images', product.image))
-                    }
-                }
-                var aEliminar = products.indexOf(product);
-                products.splice(aEliminar, 1)
+        db.Product.update({
+           exists:0
+        },
+        {
+            where:{
+                id:req.params.id
             }
-        });
-
-        setMock(products);
-        res.redirect('/admin/products');
+        })
+        .then(()=>{
+            res.redirect('/admin/products');
+        })
+        .catch((error) => { res.send(error) })
     }
 }
 

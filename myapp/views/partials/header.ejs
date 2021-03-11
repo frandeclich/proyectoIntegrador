@@ -6,6 +6,7 @@
         <a href="#barra" class="link"><i class="fas fa-bars"></i></a>
         <div class="nav-bg" id="barra">
           <ul class="barra-nav">
+            <li class="item-li"><a href="/" class="item-nav">Inicio</a></li>
             <% if (locals.user) { %>
               <li class="item-li"><a href="/user/logout" class="item-nav">Cerrar sesión</a></li>
               <li class="item-li"><a href="/user/profile" class="item-nav">Mi perfil</a></li>
@@ -21,6 +22,7 @@
             <li class="item-li"><a href="/category/cassettes" class="item-nav">Cassettes</a></li>
             <li class="item-li"><a href="/category/cds" class="item-nav">CD'S</a></li>
             <li class="item-li"><a href="/category/speakers" class="item-nav">Periféricos</a></li>
+            <li class="item-li"><a href="/admin/products" class="item-nav">Admin</a></li>
           </ul>
           <a href="#header" class="cross">
             <i class="fas fa-times"></i>

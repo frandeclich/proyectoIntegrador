@@ -3,7 +3,9 @@ const { Op } = require("sequelize");
 
 module.exports = {
     home: (req, res) => {
-        db.Product.findAll()
+        db.Product.findAll({
+            where:{exists:1}
+        })
             .then((products) => {
                 let featured = products.filter((product) => {
                     return product.featured == true;
@@ -29,7 +31,8 @@ module.exports = {
                     {description:{
                         [Op.like]:`%${query}%`
                     }}
-                ]
+                ],
+                exists:1
             },
             include: [
                 {
@@ -55,7 +58,8 @@ module.exports = {
     detail: (req, res) => {
         db.Product.findOne({
             where: {
-                id:req.params.id
+                id:req.params.id,
+                exists:1
             },
             include: [
                 {

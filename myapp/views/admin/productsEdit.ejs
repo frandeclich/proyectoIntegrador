@@ -128,11 +128,19 @@
                 <div class="select">
                   
                   <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="select-category" name="category">
-                    <option value="" selected hidden>Categorías</option>
-                    <option value="vinilo">Vinilos</option>
-                    <option value="cd">CD'S</option>
-                    <option value="cassette">Cassettes</option>
-                    <option value="speaker">Periféricos y más</option>
+                    <!-- <option value="" selected hidden>Categorías</option> -->
+                    <option value="1" <% if (product.category.id==1) { %>
+                        selected
+                       <% } %>>Vinilos</option>
+                    <option value="2" <% if (product.category.id==2) { %>
+                        selected
+                       <% } %>>CD'S</option>
+                    <option value="3" <% if (product.category.id==3) { %>
+                        selected
+                       <% } %>>Cassettes</option>
+                    <option value="4" <% if (product.category.id==4) { %>
+                        selected
+                       <% } %>>Periféricos y más</option>
                   </select>
                 </div>
               </div>
