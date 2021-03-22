@@ -19,8 +19,11 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false
         },
         password: {
-            type: dataTypes.STRING(45),
+            type: dataTypes.STRING(70),
             allowNull: false
+        },
+        type:{
+            type: dataTypes.TINYINT
         }
     }
     const config = {

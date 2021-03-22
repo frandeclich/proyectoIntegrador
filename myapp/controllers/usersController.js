@@ -1,90 +1,92 @@
 const path = require('path');
 const bcrypt = require('bcrypt');
 const fs = require('fs');
-const {check, validationResult, body} = require('express-validator');
+const { check, validationResult, body } = require('express-validator');
+const db = require('../database/models');
 
-const {getUsers, setUser}=require(path.join('..','data','usersData'))
-let users=getUsers()
+const { getUsers, setUser } = require(path.join('..', 'data', 'usersData'))
+let users = getUsers()
 
 
-module.exports={
-    login: (req,res)=>{
-        res.render('login',{
-            title:'Iniciar Sesión' 
+module.exports = {
+    login: (req, res) => {
+        res.render('login', {
+            title: 'Iniciar Sesión'
         })
     },
-    register: (req,res)=>{  
-        res.render('register',{
-            title:'Registrate'
+    register: (req, res) => {
+        res.render('register', {
+            title: 'Registrate'
         })
     },
-    processLogin:(req,res)=>{
-        const {email,pass,rememberme} = req.body
+    processLogin: (req, res) => {
 
-        let userResult = users.find(user => user.email === email.trim())
-        if (userResult) {
-            if (bcrypt.compareSync(pass.trim(),userResult.pass)) {
-                req.session.user = userResult
-                if (rememberme != undefined) {
-                    res.cookie('rememberme',userResult.email,{maxAge: 60000})  
-                }
-                return res.redirect('/user/profile')  
-                
+        const { email, pass, rememberme } = req.body
+        db.User.findOne({
+            where : {
+                email
             }
-        }
-        res.render('login',{
-            title:'Error en el login.',
-            error: 'Los datos enviados no coinciden con los datos de ningún usuario.'
         })
+        .then((user) => {
+            if (user && bcrypt.compareSync(pass.trim(), user.password)) {
+                req.session.user = {
+                    id : user.id,
+                    name : user.name,
+                }
+                if (rememberme != undefined) {
+                    res.cookie('rememberme', user.email, { maxAge: 60000 })
+                }
+                return res.redirect('/')
+            }
+            else {
+                return res.render('login', {
+                    title: 'Error en el login.',
+                    error: 'Los datos enviados no coinciden con los datos de ningún usuario.'
+                })
+            }
+        })
+        .catch((error) => { res.send(error) })
     },
-    processRegister:(req,res)=>{
+    processRegister: (req, res) => {
         const errors = validationResult(req)
 
         if (!errors.isEmpty()) {
-            
-            return res.render('register',{
-                title:'Formulario inválido',
-                errors:errors.mapped(),
-                old : req.body
+
+            return res.render('register', {
+                title: 'Formulario inválido',
+                errors: errors.mapped(),
+                old: req.body
             })
         }
+        else {
+            const { email, pass } = req.body
 
-        const {email,pass} = req.body
+            let passHash = bcrypt.hashSync(pass.trim(), 12)
 
-        let lastID = 0;
-        users.forEach(user => {
-            if (user.id > lastID) {
-                lastID = user.id
-            }
-        });
-
-        let passHash = bcrypt.hashSync(pass.trim(),12)
-
-        const newUser = {
-            id : +lastID + 1,
-            email,
-            pass : passHash
+            db.User.create({
+                email: email.trim(),
+                password: passHash
+            })
+                .then(() => {
+                    res.redirect('/user/login')
+                })
+                .catch((error) => { res.send(error) })
         }
-        users.push(newUser)
-
-        setUser(users);
-
-        res.redirect('/user/login')
     },
-    logout:(req,res)=>{       
+    logout: (req, res) => {
         delete req.session.user
-        res.cookie('rememberme','',{maxAge: -1})
+        res.cookie('rememberme', '', { maxAge: -1 })
         res.redirect('/user/login')
     },
-    micarrito: (req,res)=>{
-        res.render('micarrito',{
-            title:'Tu carrito'
+    micarrito: (req, res) => {
+        res.render('micarrito', {
+            title: 'Tu carrito'
         })
     },
-    profile: (req,res)=>{
+    profile: (req, res) => {
         let user = req.session.user
-        res.render('profile',{
-            title:'Tu perfil',
+        res.render('profile', {
+            title: 'Tu perfil',
             /* user */
         })
     }

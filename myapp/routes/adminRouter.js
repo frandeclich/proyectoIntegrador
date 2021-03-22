@@ -5,12 +5,15 @@ const upload = require('../middlewares/subidaImagenes');
 const createProductValidator = require('../validations/createProductValidator')
 const editProductValidator = require('../validations/editProductValidator')
 
-const {productsList,productsSearch,productsCreate,productsDelete,productsEdit,productsStore,productsUpdate} = require('../controllers/adminController');
+const {productsList,login,processLogin,productsSearch,productsCreate,productsDelete,productsEdit,productsStore,productsUpdate} = require('../controllers/adminController');
 
 
 
 //entidad autos
 router.get('/products',productsList);
+
+router.get('/login',login)
+router.post('/login',processLogin)
 
 router.get('/search',productsSearch)
 
