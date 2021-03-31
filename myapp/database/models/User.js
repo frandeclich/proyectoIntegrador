@@ -19,6 +19,9 @@ module.exports = (sequelize, dataTypes) => {
         address: {
             type: dataTypes.STRING(70),
         },
+        role: {
+            type: dataTypes.TINYINT
+        }
     };
     const config = {
         tableName: "users",
@@ -29,6 +32,10 @@ module.exports = (sequelize, dataTypes) => {
     const User = sequelize.define(alias, cols, config);
 
     User.associate = function (models) {
+        User.hasMany(models.Product, {
+            as: "products",
+            foreignKey: 'admin_id'
+        })
         User.belongsToMany(models.Product, {
             as: "products_liked",
             through: "user_product_liked",

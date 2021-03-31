@@ -18,10 +18,10 @@ module.exports = [
 
     check('pass')
         .isLength({
-            min: 3,
-            max: 8
+            min: 6,
+            max: 14
         })
-        .withMessage('La contraseña debe tener entre 3 y 8 caracteres'),
+        .withMessage('La contraseña debe tener entre 6 y 14 caracteres'),
 
     body('email').custom(value => {
         return db.User.findOne({

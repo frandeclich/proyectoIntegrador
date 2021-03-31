@@ -13,21 +13,17 @@
           <div class="row">
             <div class="col-md-6 col-lg-4">
 
-              <% if (typeof errors != 'undefined' && errors.title) { %>
-               <h6 class="text-danger"><%= errors.title.msg %> </h6>
-              <% } %>
-
+              <h6 class="text-danger title-error"><% if (typeof errors != 'undefined' && errors.title) { %><%= errors.title.msg %> <% } %></h6>
+             
               <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="title" placeholder="Nombre del producto" name="title" value="<%= (typeof old != 'undefined' && old.title) ? old.title : ""%>">
                 <label for="title">Nombre del producto</label>
               </div>
             </div>
             <div class="col-md-6 col-lg-4">
-
-              <% if (typeof errors != 'undefined' && errors.description) { %>
-                <h6 class="text-danger"><%= errors.description.msg %> </h6>
-               <% } %>
-
+              
+                <h6 class="text-danger description-error"><% if (typeof errors != 'undefined' && errors.description) { %><%= errors.description.msg %><% } %></h6>
+               
               <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="description" placeholder="Una pequeña descripción" name="description" value="<%= (typeof old != 'undefined' && old.description) ? old.description : ""%>">
                 <label for="description">Una pequeña descripción</label>
@@ -53,9 +49,9 @@
 
             <div class="col-md-6 mt-2">
 
-              <% if (typeof errors != 'undefined' && errors.price) { %>
-                <h6 class="text-danger"><%= errors.price.msg %> </h6>
-               <% } %>
+              
+                <h6 class="text-danger price-error"><% if (typeof errors != 'undefined' && errors.price) { %><%= errors.price.msg %><% } %></h6>
+               
 
               <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="price" placeholder="Precio" name="price" value="<%= (typeof old != 'undefined' && old.price) ? old.price : ""%>">
@@ -88,9 +84,8 @@
             </div>
             
             <div class="col-md-6 col-lg-4 mt-2">
-              <% if (typeof errors != 'undefined' && errors.category) { %>
-                <h6 class="text-danger"><%= errors.category.msg %> </h6>
-              <% } %>
+              
+                <h6 class="text-danger"><% if (typeof errors != 'undefined' && errors.category) { %><%= errors.category.msg %><% } %></h6>
 
               <div class="select">
                 
@@ -114,6 +109,7 @@
           </form>
         </main>
     <%- include('./adminPartials/footer')  %> 
+    <script src="/javascripts/productsCreate.js"></script>
 
 </body>
 </html>

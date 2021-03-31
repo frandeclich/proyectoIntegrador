@@ -32,6 +32,7 @@ module.exports = {
                 req.session.user = {
                     id : user.id,
                     name : user.name,
+                    role : role.role
                 }
                 if (rememberme != undefined) {
                     res.cookie('rememberme', user.email, { maxAge: 60000 })
@@ -62,10 +63,12 @@ module.exports = {
             const { email, pass } = req.body
 
             let passHash = bcrypt.hashSync(pass.trim(), 12)
+            let role = 0
 
             db.User.create({
                 email: email.trim(),
-                password: passHash
+                password: passHash,
+                role: role
             })
                 .then(() => {
                     res.redirect('/user/login')

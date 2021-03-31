@@ -135,7 +135,6 @@ nav div.navigation ul{
 .nav-bg a.cross:hover{
   /* border: 5px solid var(--verdeFondo); */
   background-color: var(--verdeFondo);
-  /* a */
 }
 .link-lupa i.fa-search{
   font-size: 6rem;
@@ -151,15 +150,10 @@ nav div.navigation ul{
 
 .caja-busqueda{
   background-color: var(--verdeHeader);
-  /* z-index: 5;
-  height: 8vh; */
   position: fixed;
   width: 100vw;
   top: 0;
   left: 0;
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
   visibility: hidden;
   opacity: 0;
   transform: translateY(-8vh);
@@ -227,10 +221,7 @@ nav div.navigation ul{
 
 
 /*FOOOOTER*/
-footer{
-  /* position: absolute;
-  bottom: 0;
-  width: 100%; */
+.footer{
   margin-top: 40px;
   background-color: var(--marronFooter);
   height: 20vh;
@@ -250,4 +241,9 @@ footer h3, footer h4{
 footer h5{
   font-size: 2.4rem;
   
+}
+@media screen and (min-width: 768px){
+  .footer{
+    background-color: brown;
+  }
 }

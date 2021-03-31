@@ -61,7 +61,7 @@ module.exports = (sequelize, dataTypes) => {
             foreignKey: 'category_id'
         })
 
-        Product.belongsTo(models.Admin, {
+        Product.belongsTo(models.User, {
             as: "admin",
             foreignKey: 'admin_id'
         })

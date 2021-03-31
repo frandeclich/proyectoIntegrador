@@ -1,160 +1,193 @@
 <!DOCTYPE html>
 <html lang="es">
-<%- include('./adminPartials/head')  %> 
-</head>
-<body>
-    <%- include('./adminPartials/header')  %> 
+<%- include('./adminPartials/head') %>
+    </head>
 
-    <main class="container mt-3">
-        <form action="/admin/products/update/<%= product.id %>?_method=PUT " method="POST" enctype="multipart/form-data">
-          <h3>Editar el producto</h3>
-          <hr>
-          <div class="row">
-            <div class="col-md-6 col-lg-4">
+    <body>
+        <%- include('./adminPartials/header') %>
 
-                <% if (typeof errors != 'undefined' && errors.title) { %>
-                    <h6 class="text-danger"><%= errors.title.msg %> </h6>
-                   <% } %>
+            <main class="container mt-3">
+                <form action="/admin/products/update/<%= product.id %>?_method=PUT " method="POST"
+                    enctype="multipart/form-data">
+                    <h3>Editar el producto</h3>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6 col-lg-4">
 
-              <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="title" placeholder="marca" name="title" value="<%= product.title %> ">
-                <label for="title">Título</label>
-              </div>
-            </div>
+                            <h6 class="text-danger title-error">
+                                <% if (typeof errors !='undefined' && errors.title) { %>
+                                    <%= errors.title.msg %>
+                                        <% } %>
+                            </h6>
+
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="title" placeholder="marca" name="title"
+                                    value="<%= product.title %> ">
+                                <label for="title">Título</label>
+                            </div>
+                        </div>
 
 
-            <div class="col-md-6 col-lg-4">
+                        <div class="col-md-6 col-lg-4">
 
-                <% if (typeof errors != 'undefined' && errors.description) { %>
-                    <h6 class="text-danger"><%= errors.description.msg %> </h6>
-                   <% } %>
+                            <h6 class="text-danger description-error">
+                                <% if (typeof errors !='undefined' && errors.description) { %>
+                                    <%= errors.description.msg %>
+                                        <% } %>
+                            </h6>
 
-              <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="description" placeholder="Descripción" name="description" value="<%= product.description %> ">
-                <label for="description">Descripción</label>
-              </div>
-            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="description" placeholder="Descripción"
+                                    name="description" value="<%= product.description %> ">
+                                <label for="description">Descripción</label>
+                            </div>
+                        </div>
 
-            <% if (product.condition) { %>
-                <div class="col-md-6 col-lg-4">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="condition" id="condition1" value="true" checked>
-                        <label class="form-check-label" for="condition1">
-                            Nuevo
-                        </label>
+                        <% if (product.condition) { %>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="condition" id="condition1"
+                                        value="true" checked>
+                                    <label class="form-check-label" for="condition1">
+                                        Nuevo
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="condition" id="condition2"
+                                        value="">
+                                    <label class="form-check-label" for="condition2">
+                                        Usado
+                                    </label>
+                                </div>
+                            </div>
+                            <% } else { %>
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="condition" id="condition1"
+                                            value="true">
+                                        <label class="form-check-label" for="condition1">
+                                            Nuevo
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="condition" id="condition2"
+                                            value="" checked>
+                                        <label class="form-check-label" for="condition2">
+                                            Usado
+                                        </label>
+                                    </div>
+                                </div>
+                                <% } %>
+
+
+
+                                    <div class="col-md-6 mt-2">
+
+                                        <h6 class="text-danger price-error">
+                                            <% if (typeof errors !='undefined' && errors.price) { %>
+                                                <%= errors.price.msg %>
+                                                    <% } %>
+                                        </h6>
+
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" id="price" placeholder="Precio"
+                                                name="price" value="<%= product.price %> ">
+                                            <label for="price">Precio</label>
+                                        </div>
+                                    </div>
+
+                                    <% if (product.featured) { %>
+                                        <div class="col-md-6 col-lg-4">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="featured"
+                                                    id="featured1" value="true" checked>
+                                                <label class="form-check-label" for="featured1">
+                                                    Producto destacado
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="featured"
+                                                    id="featured2" value="">
+                                                <label class="form-check-label" for="featured2">
+                                                    Producto no destacado
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <% } else { %>
+                                            <div class="col-md-6 col-lg-4">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="featured"
+                                                        id="featured1" value="true">
+                                                    <label class="form-check-label" for="featured1">
+                                                        Producto destacado
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="featured"
+                                                        id="featured2" value="" checked>
+                                                    <label class="form-check-label" for="featured2">
+                                                        Producto no destacado
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <% } %>
+
+                                                <div class="col-lg-6 mt-0">
+                                                    <div>
+                                                        <label for="formFileLg">Cambio de Imagen (CAMPO
+                                                            OBLIGATORIO)</label>
+                                                        <input class="form-control form-control-lg" id="formFileLg"
+                                                            type="file" name="product" mt-1>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6 col-lg-4 mt-4">
+
+                                                    <h6 class="text-danger">
+                                                        <% if (typeof errors !='undefined' && errors.category) { %>
+                                                            <%= errors.category.msg %>
+                                                                <% } %>
+                                                    </h6>
+
+
+                                                    <div class="select">
+
+                                                        <select class="form-select form-select-lg mb-3"
+                                                            aria-label=".form-select-lg example" id="select-category"
+                                                            name="category">
+                                                            <!-- <option value="" selected hidden>Categorías</option> -->
+                                                            <option value="1" <% if (product.category.id==1) { %>
+                                                                selected
+                                                                <% } %>>Vinilos
+                                                            </option>
+                                                            <option value="2" <% if (product.category.id==2) { %>
+                                                                selected
+                                                                <% } %>>CD'S
+                                                            </option>
+                                                            <option value="3" <% if (product.category.id==3) { %>
+                                                                selected
+                                                                <% } %>>Cassettes
+                                                            </option>
+                                                            <option value="4" <% if (product.category.id==4) { %>
+                                                                selected
+                                                                <% } %>>Periféricos y más
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="condition" id="condition2" value="">
-                        <label class="form-check-label" for="condition2">
-                            Usado
-                        </label>
-                    </div>
-                </div>
-            <% } else { %>
-                <div class="col-md-6 col-lg-4">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="condition" id="condition1" value="true">
-                        <label class="form-check-label" for="condition1">
-                            Nuevo
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="condition" id="condition2" value="" checked>
-                        <label class="form-check-label" for="condition2">
-                            Usado
-                        </label>
-                    </div>
-                </div>            
-            <% } %>
-             
 
-            
-            <div class="col-md-6 mt-2">
-
-                <% if (typeof errors != 'undefined' && errors.price) { %>
-                    <h6 class="text-danger"><%= errors.price.msg %> </h6>
-                   <% } %>
-
-              <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="price" placeholder="Precio" name="price" value="<%= product.price %> ">
-                <label for="price">Precio</label>
-              </div>
-            </div>
-
-            <% if (product.featured) { %>
-                <div class="col-md-6 col-lg-4">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="featured" id="featured1" value="true" checked>
-                        <label class="form-check-label" for="featured1">
-                            Producto destacado
-                        </label>
+                    <div class="d-grid gap-2 mt-3">
+                        <button class="btn btn-success" type="submit">Guardar los cambios</button>
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="featured" id="featured2" value="">
-                        <label class="form-check-label" for="featured2">
-                            Producto no destacado
-                        </label>
-                    </div>
-                </div>
-            <% } else { %>
-                <div class="col-md-6 col-lg-4">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="featured" id="featured1" value="true">
-                        <label class="form-check-label" for="featured1">
-                            Producto destacado
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="featured" id="featured2" value="" checked>
-                        <label class="form-check-label" for="featured2">
-                            Producto no destacado
-                        </label>
-                    </div>
-                </div>            
-            <% } %>
 
-            <div class="col-lg-6 mt-0">
-                <div>
-                    <label for="formFileLg">Cambio de Imagen (CAMPO OBLIGATORIO)</label>
-                    <input class="form-control form-control-lg" id="formFileLg" type="file" name="product" mt-1>
-                </div>
-            </div>
 
-            <div class="col-md-6 col-lg-4 mt-4">
-                <% if (typeof errors != 'undefined' && errors.category) { %>
-                  <h6 class="text-danger"><%= errors.category.msg %> </h6>
-                <% } %>
-  
-                <div class="select">
-                  
-                  <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="select-category" name="category">
-                    <!-- <option value="" selected hidden>Categorías</option> -->
-                    <option value="1" <% if (product.category.id==1) { %>
-                        selected
-                       <% } %>>Vinilos</option>
-                    <option value="2" <% if (product.category.id==2) { %>
-                        selected
-                       <% } %>>CD'S</option>
-                    <option value="3" <% if (product.category.id==3) { %>
-                        selected
-                       <% } %>>Cassettes</option>
-                    <option value="4" <% if (product.category.id==4) { %>
-                        selected
-                       <% } %>>Periféricos y más</option>
-                  </select>
-                </div>
-              </div>
-          
-          </div>
-        
-          <div class="d-grid gap-2 mt-3">
-            <button class="btn btn-success" type="submit">Guardar los cambios</button>
-          </div>
-        
-         
-          </form>
-        </main>
-    <%- include('./adminPartials/footer')  %> 
+                </form>
+            </main>
+            <%- include('./adminPartials/footer') %>
+            <script src="/javascripts/productsEdit.js"></script>
 
-</body>
+    </body>
+
 </html>

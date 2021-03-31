@@ -56,6 +56,28 @@ module.exports = {
         })
         .catch((error) => { res.send('Hola') })
     },
+    register:(req,res)=>{
+        res.render('register', {
+            title: 'Registrate'
+        })
+    },
+    processRegister: (req,res)=>{
+        
+        const { email, pass } = req.body
+
+        let passHash = bcrypt.hashSync(pass.trim(), 12)
+        let role = 1
+
+        db.User.create({
+            email: email.trim(),
+            password: passHash,
+            role: role
+        })
+            .then(() => {
+                res.redirect('/user/login')
+            })
+            .catch((error) => { res.send(error) })
+        },
     productsSearch: (req, res) => {
         let query = req.query.search
         db.Product.findAll({
