@@ -13,8 +13,12 @@ module.exports = {
 
 
     productsList: (req, res) => {
+    let admin_id = req.session.user.id
         db.Product.findAll({
-            where: { exists: 1 }
+            where: { 
+                exists: 1,
+                admin_id
+            }
         })
             .then((products) => {
                 return res.render('admin/products', {
@@ -94,7 +98,8 @@ module.exports = {
                         }
                     }
                 ],
-                exists: 1
+                exists: 1,
+                admin_id
             }
         })
             .then((products) => {
@@ -134,11 +139,10 @@ module.exports = {
             })
         } else {
             const { title, description, condition, price, featured, category } = req.body;
-            var image = "acdc-1.jpg"
             if (req.files[0]) {
                 var image = req.files[0].filename
             }
-            var admin_id = 1
+            var admin_id = req.session.user.id
             var exists = 1
             db.Product.create({
                 title: title,

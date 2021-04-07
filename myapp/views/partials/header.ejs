@@ -1,4 +1,4 @@
-<div class="nada"><h6>nada</h6></div>
+<div class="nada"><h6></h6></div>
 <header id="#header">
     <nav>
       <div class="navigation">
@@ -22,10 +22,12 @@
             <li class="item-li"><a href="/category/cassettes" class="item-nav">Cassettes</a></li>
             <li class="item-li"><a href="/category/cds" class="item-nav">CD'S</a></li>
             <li class="item-li"><a href="/category/speakers" class="item-nav">Periféricos</a></li>
-            <li class="item-li"><a href="/admin/products" class="item-nav">Admin</a></li>
+            <% if (locals.user && locals.user.role == 1) { %>
+              <li class="item-li"><a href="/admin/products" class="item-nav">Admin</a></li>
+            <% } %>
           </ul>
           <a href="#header" class="cross">
-            <i class="fas fa-times"></i>
+            <i class="fas fa-times"></i> 
           </a>
         </div>
       </div>

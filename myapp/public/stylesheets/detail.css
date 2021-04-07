@@ -3,87 +3,93 @@
 
 .caja-principal-detail{
     background-color: var(--cremaCajas);
-    margin: 3rem;
-    padding: 3rem 0;
-    border-radius: 5rem;
-    margin-bottom: 15rem;
+    margin: 1rem;;
+    padding: 1rem 0;;
+    border-radius: 2rem;;
+    margin-bottom: 5rem;;
 }
 .margen-costadito{
-    margin: 0 4.5rem;
+    margin: 0 1.5rem;;
 }
 main div.caja-principal-detail h3{
-    font-size: 5rem;
+    font-size: 2rem;;
     /* font-family: 'Roboto' */
     font-weight: bold;
 }
 main div.caja-principal-detail div.img-container{
-    padding: 2rem;
+    margin-top: .6rem;
+    padding: .7rem 0;
     position: relative;
+    width: 85vw;
+}
+.image{
+    width: 100%;
 }
 main div.caja-principal-detail div.img-container a.favoritos{
     background-color: var(--cremaCajas);
-    font-size: 7rem;
+    font-size: 2rem;;
     color:slategrey;
-    padding: 1.8rem 2rem;
+    padding: .6rem .8rem;;
     position: absolute;
-    top: 4rem;
-    right: 7rem;
-    border-radius: 7rem;
+    top: 1.3rem;;
+    right: 1rem;;
+    border-radius: 2rem;;
     text-decoration: none;
 }
 main div.caja-principal-detail div.img-container div.caja-estado{
     background-color: var(--cremaCajas);
     /* max-width:15rem; */
     position: absolute;
-    right: 8rem;
-    bottom: 4rem;
-    width: 16rem;
-    border-radius: 2rem;
-    height: 5rem;
-    border-radius: 2rem;
+    right: 1rem;;
+    bottom: 1.4rem;;
+    width: 6rem;;
+    border-radius: .8rem;;
+    height: 1.9rem;;
+    border-radius: .8rem;;
 }
 main div.caja-principal-detail div.img-container div.caja-estado p.estado{
-    font-size: 3.6rem;
+    font-size: 1.3rem;;
     color: slategrey;
     text-align: center;
 }
 
 
 main div.caja-principal-detail div.price-share-container p.price-detail{
-    font-size: 8rem;
+    font-size: 2.5rem;;
 }
 main div.caja-principal-detail div.price-share-container{
     /* display: flex; */
+    margin-top: .5rem;
     position: relative;
 }
 main div.caja-principal-detail div.price-share-container a{
     text-decoration: none;
     color: black;
-    font-size: 7rem;
+    font-size: 2rem;;
     position: absolute;
-    right: 3rem;
-    top: 2.8rem;
+    right: 1rem;;
+    top: 1rem;;
 }
 
 /* PRUEBA ACORDIÓN
  */.accordion-button{
-    height: 10rem;
-    font-size: 4rem;
+    height: 3rem;;
+    font-size: 1.4rem;;
     color: black;
     text-decoration: none;
 }
 .accordion-body{
-    font-size: 4rem;
+    font-size: 1.4rem;;
 }
 
 /* COLLAPSE */
 .boton-description{
-    font-size: 4rem;
+    font-size: 1.3rem;;
     color: black;
     text-decoration: none;
 }
 .boton-description button{
-    font-size: 4rem;
+    font-size: 1.3rem;;
     color: var(--cremaCajas);
     text-decoration: none;
     width: 100%;
@@ -91,24 +97,24 @@ main div.caja-principal-detail div.price-share-container a{
     /* border: 2px solid var(--marronFooter); */
 }
 .collapse-description{
-    font-size: 4rem;
+    font-size: 1.3rem;;
 } 
 
 
 /* DESCRIPCIÓN COMPLETA SIN BT */
 p.description-completa{
-    font-size: 3.8rem;
+    font-size: 1.2rem;;
 }
 
 
 
 .btn-carrito{
-    font-size: 3.5rem;
+    font-size: 1.5rem;
     background-color: var(--marronFooter);
     color: white;
-    border-radius: 1rem;
+    border-radius: .3rem;
     width: 90%;
-    margin-top: 10rem;
-    padding: 2rem;
+    margin-top: 3rem;
+    padding: 1rem;
 }
 

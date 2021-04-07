@@ -28,7 +28,7 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 .nada{
-  height: 8vh;
+  height: 7vh;
 }
 /*HEADER*/
 header{
@@ -42,7 +42,8 @@ header{
 nav{
   height: 8vh;
   width: 100%;
-  padding: 1rem;
+  padding: .6rem;;
+  padding-right: .9rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -53,16 +54,14 @@ nav{
   text-decoration: none;
   /* font-weight: bold; */
   display: inline-block;
-  padding: .5rem;
-}
-.titulo-grande:hover{
-  color: black;
+  padding: .25rem 0rem;;
+  padding-top: .75rem;
 }
 .titulo-grande h1{
-  font-size: 7.5rem;
+  font-size: 3rem;;
 }
 .link{
-  padding: 3rem;
+  padding: 1rem;;
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
@@ -70,7 +69,7 @@ nav{
   z-index: 0;
 }
 .fa-bars{
-  font-size: 7rem;
+  font-size: 2rem;;
   display: block;
   color: var(--marronFooter);
   position: relative;
@@ -81,7 +80,7 @@ nav div.navigation ul{
   width: 70vw;
 	height: 100vh;
 	background-color: var(--verdeHeader);
-	padding: 3rem;
+	padding: 1.5rem;;
   position: fixed;
   top: 0;
   left: 0;
@@ -107,38 +106,32 @@ nav div.navigation ul{
   transform: translateX(-0.1vw);
 }
 .item-li{
-  padding: 3rem;
+  padding: 0.9rem;;
 }
 .item-nav{
   text-decoration: none;
   color: var(--marronFooter);
-  font-size: 5rem;
-  padding: 3rem;
-}
-.item-nav:hover{
-  border-left: 1rem solid var(--verdeFondo);
-  color: var(--marroncito);
+  font-size: 1.8rem;;
 }
 .nav-bg a.cross{
-  font-size: 8rem;
+  font-size: 3rem;;
   cursor: pointer;
-  color: var(--marronFooter);
-  /* background-color: var(--verdeFondo); */
-  width: 12rem;
+  color: var(--verdeHeader);
+  background-color: var(--verdeFondo);
+  width: 6rem;;
   position: relative;
-  top: 2rem;
-  left:55rem;
+  top: 1rem;;
+  left:27.5rem;;
   z-index: 12;
   border-radius: 50%;
-  padding: 0 2.5rem;
+  padding: 0 1.125rem;;
 }
 .nav-bg a.cross:hover{
   /* border: 5px solid var(--verdeFondo); */
   background-color: var(--verdeFondo);
 }
 .link-lupa i.fa-search{
-  font-size: 6rem;
-  padding: 0 20px;
+  font-size: 2rem;;
   color: var(--marronFooter);
   cursor: pointer;
 }
@@ -171,20 +164,22 @@ nav div.navigation ul{
   background-color: var(--verdeHeader);
   display: inline-block;
   height: 5vh;
-  width: 75vw;
-  border-top-left-radius: 3rem;
-  border-bottom-left-radius: 3rem;
-  font-size: 5rem;
-  padding: 0 2rem;
+  width: 60vw;
+  border-top-left-radius: 1rem;;
+  border-bottom-left-radius: 1rem;;
+  border-top-right-radius: 0;
+  font-size: 1.5rem;;
+  padding: 0 0.5rem;;
   color: var(--marronFooter);
+  margin-left: .4rem;
 }
 .boton-busqueda{
   background-color: transparent;
   border: none;
 }
 .submitt{
-  font-size: 6rem;
-  padding: 2rem 2rem;
+  font-size: 1.5rem;;
+  padding: 0.5rem 2rem;;
   color: var(--marronFooter);
   background-color: var(--verdeHeader);
   border: 0.2rem solid var(--marronFooter);
@@ -193,12 +188,14 @@ nav div.navigation ul{
   border-top-right-radius: 3rem;
 }
 .caja-busqueda a.cross{
-  font-size: 7rem;
+  width: 5vw;
+  font-size: 2rem;;
   background-color: var(--verdeHeader);
   color: var(--marronFooter);
   border: 0.2rem solid var(--marronFooter);
   height: 5vh;
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
+  padding-right: 2rem;
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -230,7 +227,7 @@ nav div.navigation ul{
   align-items: center;
   justify-content: space-around;
 }
-footer h3, footer h4{
+.footer h3, footer h4{
   color:var(--cremaCajas);
   font-size: 1.7vh;  
   text-align: center;
@@ -238,12 +235,11 @@ footer h3, footer h4{
   z-index: 4;
   align-items: center;
 }
-footer h5{
-  font-size: 2.4rem;
-  
+.footer h5{
+  font-size: 1rem;
 }
 @media screen and (min-width: 768px){
   .footer{
-    background-color: brown;
+    background-color: black;
   }
 }

@@ -24,7 +24,7 @@ module.exports = {
         const { email, pass, rememberme } = req.body
         db.User.findOne({
             where : {
-                email
+                email: email
             }
         })
         .then((user) => {
@@ -32,7 +32,7 @@ module.exports = {
                 req.session.user = {
                     id : user.id,
                     name : user.name,
-                    role : role.role
+                    role : user.role
                 }
                 if (rememberme != undefined) {
                     res.cookie('rememberme', user.email, { maxAge: 60000 })
@@ -46,7 +46,7 @@ module.exports = {
                 })
             }
         })
-        .catch((error) => { res.send(error) })
+        .catch((error) =>  res.send(error + '1') )
     },
     processRegister: (req, res) => {
         const errors = validationResult(req)
@@ -63,7 +63,7 @@ module.exports = {
             const { email, pass } = req.body
 
             let passHash = bcrypt.hashSync(pass.trim(), 12)
-            let role = 0
+            let role = 1
 
             db.User.create({
                 email: email.trim(),
