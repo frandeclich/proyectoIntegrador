@@ -10,9 +10,11 @@
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="/">Home</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/admin/login">Login</a>
-              </li>
+              <% if (locals.user && locals.user.email == "fdeclich1@gmail.com") { %>
+                <li class="nav-item">
+                  <a class="nav-link" href="/admin/users">Usuarios y admins.</a>
+                </li>
+              <% } %>
               <li class="nav-item">
                 <a class="nav-link" href="/admin/register">Register</a>
               </li>

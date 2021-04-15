@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('./adminPartials/head')  %> 
+<link rel="stylesheet" href="/stylesheets/admin/products.css">
+</head>
+<body>
+    <%- include('./adminPartials/header')  %> 
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Email</th>
+            <th scope="col">¿Admin?</th>
+            <th scope="col">Cambio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% users.forEach(user => { %>
+            <tr>
+                <th scope="row"><%=user.id%></th>
+                <td><%= user.email %> </td>
+                <td><%= user.role %> </td>
+                <td><% if (user.role==1) { %>
+                    <form action="/admin/users/undoadmin/<%= user.id %>?_method=DELETE" method="post">
+                        <button class="btn btn-sm btn-danger" type="submit">Deshacer admin</button>
+                    </form>
+                <% } else if (user.role==0){ %>
+                    <form action="/admin/users/doadmin/<%= user.id %>?_method=DELETE" method="post">
+                        <button class="btn btn-sm btn-danger" type="submit">Hacer admin</button>
+                    </form>
+                <% } %></td>
+              </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    <%- include('./adminPartials/footer')  %> 
+</body>
+</html>

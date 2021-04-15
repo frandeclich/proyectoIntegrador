@@ -5,7 +5,6 @@ const { check, validationResult, body } = require('express-validator');
 
 const db = require("../database/models");
 const { Op } = require("sequelize");
-const { Console } = require('console');
 
 
 module.exports = {
@@ -13,7 +12,7 @@ module.exports = {
 
 
     productsList: (req, res) => {
-    let admin_id = req.session.user.id
+        let admin_id = req.session.user.id
         db.Product.findAll({
             where: { 
                 exists: 1,
@@ -25,6 +24,42 @@ module.exports = {
                     title: 'Listado de productos',
                     products
                 })
+            })
+            .catch((error) => { res.send(error) })
+    },
+    users:(req,res)=>{
+        db.User.findAll({
+            where:{id:{[Op.ne]:1}}
+        })
+            .then((users)=>{
+                res.render('admin/usersAndAdmins',{
+                    title:'Usuarios',
+                    users
+                })
+            })
+            .catch((error) => { res.send('Hola'+error) })
+    },
+    doadmin:(req,res)=>{
+        let id=req.params.id
+        db.User.update({
+            role:1
+        },{
+            where:{id}
+        })
+            .then(() => {
+                res.redirect('/admin/users');
+            })
+            .catch((error) => { res.send(error) })
+    },
+    undoadmin:(req,res)=>{
+        let id=req.params.id
+        db.User.update({
+            role:0
+        },{
+            where:{id}
+        })
+            .then(() => {
+                res.redirect('/admin/users');
             })
             .catch((error) => { res.send(error) })
     },
@@ -58,7 +93,7 @@ module.exports = {
                 })
             }
         })
-        .catch((error) => { res.send('Hola') })
+        .catch((error) => { res.send('Hola'+error) })
     },
     register:(req,res)=>{
         res.render('register', {
@@ -84,6 +119,7 @@ module.exports = {
         },
     productsSearch: (req, res) => {
         let query = req.query.search
+        let admin_id = req.session.user.id
         db.Product.findAll({
             where: {
                 [Op.or]: [
