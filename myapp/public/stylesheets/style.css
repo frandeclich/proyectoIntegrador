@@ -139,6 +139,7 @@ nav div.navigation ul{
   display: flex;
   align-items: center;
   text-decoration: none;
+  margin-right: .5rem
 }
 
 .caja-busqueda{
