@@ -22,7 +22,7 @@
             <li class="item-li"><a href="/category/cassettes" class="item-nav">Cassettes</a></li>
             <li class="item-li"><a href="/category/cds" class="item-nav">CD'S</a></li>
             <li class="item-li"><a href="/category/speakers" class="item-nav">Periféricos</a></li>
-            <% if (locals.user && locals.user.role == 1) { %>
+            <% if (locals.user && (locals.user.role == 1 || locals.user.id==1)) { %>
               <li class="item-li"><a href="/admin/products" class="item-nav">Admin</a></li>
             <% } %>
           </ul>

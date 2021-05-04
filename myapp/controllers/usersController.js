@@ -63,7 +63,7 @@ module.exports = {
             const { email, pass } = req.body
 
             let passHash = bcrypt.hashSync(pass.trim(), 12)
-            let role = 1
+            let role = 0
 
             db.User.create({
                 email: email.trim(),
